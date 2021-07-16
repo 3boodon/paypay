@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "58187188631",
+    "project_id": "paypay-7d4a7",
+    "storage_bucket": "paypay-7d4a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58187188631:android:b37606474bfd762247dcd2",
+        "android_client_info": {
+          "package_name": "com.example.paypay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58187188631-2m8q4iera47uvelr7vs16of749jm52sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9JDrbFd9H4mW3de3R4ICvABJVCIfPUts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58187188631-2m8q4iera47uvelr7vs16of749jm52sj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

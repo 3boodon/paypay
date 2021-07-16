@@ -1,0 +1,61 @@
+name: paypay
+description: PayPay is a money management app that helps you organize your financial stuff a lot more.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  provider: ^5.0.0
+  flutter_svg: ^0.21.0+1 # Helps us to use svgs in our app
+  intl: ^0.17.0 # Helps us to format dates in our app
+  #backend
+  dio:
+  shared_preferences: ^2.0.5
+  http:
+  device_preview: ^0.7.1 # Helps Us View the App in different Sizes
+  either_option: ^1.0.6
+  get: ^4.1.4
+  #hive Library
+  hive:
+  hive_flutter:
+  date_format: ^2.0.2
+  path_provider: ^2.0.2
+  auto_size_text:
+  url_launcher: ^6.0.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner:
+  hive_generator:
+  flutter_launcher_icons:
+
+flutter_icons:
+  image_path: "assets/images/ic_launcher.png"
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+
+  # Poppins is the font that we are using in our App
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets\fonts\Poppins\Poppins-Bold.ttf
+          weight: 900
+        - asset: assets\fonts\Poppins\Poppins-Medium.ttf
+          weight: 500
+        - asset: assets\fonts\Poppins\Poppins-Regular.ttf
+          weight: 100
