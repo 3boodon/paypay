@@ -33,7 +33,14 @@ class DebtsList extends StatelessWidget {
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.of(context).pop(),
-                        child: Text("cancel"),
+                        child: Text(
+                          translate("cancel"),
+                          style: TextStyle(
+                            fontFamily: Constants.appLanguageCode == "ar"
+                                ? "GE_SS"
+                                : "Poppins",
+                          ),
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () => editDebt(
@@ -41,10 +48,17 @@ class DebtsList extends StatelessWidget {
                             debts: debts,
                             newDebt: _newDebt,
                             ownerName: _newOwnerName),
-                        child: Text("edit"),
+                        child: Text(
+                          translate("edit"),
+                          style: TextStyle(
+                            fontFamily: Constants.appLanguageCode == "ar"
+                                ? "GE_SS"
+                                : "Poppins",
+                          ),
+                        ),
                       ),
                     ],
-                    title: "Edit",
+                    title: translate("edit"),
                     content: Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: device.localWidth * .04),
@@ -58,8 +72,13 @@ class DebtsList extends StatelessWidget {
                             },
                             initialValue: "${debts[index].ownerName}",
                             decoration: InputDecoration(
+                              labelStyle: TextStyle(
+                                fontFamily: Constants.appLanguageCode == "ar"
+                                    ? "GE_SS"
+                                    : "Poppins",
+                              ),
                               border: OutlineInputBorder(),
-                              labelText: "Owner Name",
+                              labelText: translate("owner_name"),
                             ),
                           ),
                           SizedBox(height: device.localHeight * .02),
@@ -71,8 +90,13 @@ class DebtsList extends StatelessWidget {
                             },
                             initialValue: "${debts[index].debtAmount}",
                             decoration: InputDecoration(
+                              labelStyle: TextStyle(
+                                fontFamily: Constants.appLanguageCode == "ar"
+                                    ? "GE_SS"
+                                    : "Poppins",
+                              ),
                               border: OutlineInputBorder(),
-                              labelText: "Debt Amount",
+                              labelText: translate("debt_amount"),
                             ),
                           ),
                           SizedBox(height: device.localHeight * .02),

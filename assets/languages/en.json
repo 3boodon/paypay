@@ -56,7 +56,16 @@
 "share_paypay":"Share",
 "theme":"Theme",
 "success":"Success!",
-"success_description":"New Color was set successfully but you will need to restart the app in order for changes to be applied"
+"success_description":"New Color was set successfully but you will need to restart the app in order for changes to be applied",
+"edit":"Edit",
+"cancel":"Cancel",
+"spending_cost":"Spending Cost",
+
+"purchase_cost":"Purchase Cost",
+"owner_name":"Owner Name",
+"debt_amount":"Debt Amount",
+"apologies":"We Apologize",
+"feature_not_ready":"The Search Feature is not ready yet and is still being developed"
 
 
 

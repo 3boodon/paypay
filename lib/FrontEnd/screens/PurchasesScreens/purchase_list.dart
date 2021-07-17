@@ -35,7 +35,14 @@ class PurchasesList extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text("cancel"),
+                  child: Text(
+                    translate("cancel"),
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () => editPurchasePrice(
@@ -44,10 +51,17 @@ class PurchasesList extends StatelessWidget {
                     newPrice: _newPrice,
                     name: _newName,
                   ),
-                  child: Text("edit"),
+                  child: Text(
+                    translate("edit"),
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    ),
+                  ),
                 ),
               ],
-              title: "Edit",
+              title: translate("edit"),
               content: Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: device.localWidth * .04),
@@ -61,8 +75,13 @@ class PurchasesList extends StatelessWidget {
                       },
                       initialValue: "${purchases[index].purchaseName}",
                       decoration: InputDecoration(
+                        labelStyle: TextStyle(
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
+                        ),
                         border: OutlineInputBorder(),
-                        labelText: "Purchase Name",
+                        labelText: translate("purchase_name"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),
@@ -74,8 +93,13 @@ class PurchasesList extends StatelessWidget {
                       },
                       initialValue: "${purchases[index].price}",
                       decoration: InputDecoration(
+                        labelStyle: TextStyle(
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
+                        ),
                         border: OutlineInputBorder(),
-                        labelText: "Price",
+                        labelText: translate("price"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),

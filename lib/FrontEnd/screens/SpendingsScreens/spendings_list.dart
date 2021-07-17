@@ -34,7 +34,14 @@ class SpendingsList extends StatelessWidget {
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text("cancel"),
+                  child: Text(
+                    translate("cancel"),
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () => editSpendingPrice(
@@ -43,10 +50,17 @@ class SpendingsList extends StatelessWidget {
                     newCost: _newCost,
                     spendings: spendings,
                   ),
-                  child: Text("edit"),
+                  child: Text(
+                    translate("edit"),
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    ),
+                  ),
                 ),
               ],
-              title: "Edit",
+              title: translate("edit"),
               content: Padding(
                 padding:
                     EdgeInsets.symmetric(horizontal: device.localWidth * .04),
@@ -59,8 +73,13 @@ class SpendingsList extends StatelessWidget {
                       },
                       initialValue: "${spendings[index].spendingName}",
                       decoration: InputDecoration(
+                        labelStyle: TextStyle(
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
+                        ),
                         border: OutlineInputBorder(),
-                        labelText: "Spending Name",
+                        labelText: translate("spending_name"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),
@@ -71,8 +90,13 @@ class SpendingsList extends StatelessWidget {
                       },
                       initialValue: "${spendings[index].cost}",
                       decoration: InputDecoration(
+                        labelStyle: TextStyle(
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
+                        ),
                         border: OutlineInputBorder(),
-                        labelText: "Spending Cost",
+                        labelText: translate("cost"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),
