@@ -16,6 +16,7 @@ class SmallCardTitle extends StatelessWidget {
           maxLines: 1,
           textAlign: TextAlign.center,
           style: TextStyle(
+            fontFamily: Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
             fontWeight: FontWeight.w500,
             color: kLightTextColor,
             fontSize: device.localWidth * .12,

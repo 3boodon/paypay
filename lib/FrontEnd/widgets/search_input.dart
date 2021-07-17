@@ -57,6 +57,9 @@ class SearchInput extends StatelessWidget {
                       border: InputBorder.none,
                       hintText: placeHolder,
                       hintStyle: TextStyle(
+                        fontFamily: Constants.appLanguageCode == "ar"
+                            ? "GE_SS"
+                            : "Poppins",
                         color: kInActiveTextColor,
                         fontSize: device.localWidth * .05,
                         fontWeight: FontWeight.w700,

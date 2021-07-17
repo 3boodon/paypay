@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -28,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
     return NewPage(
       children: [
         Header(
-          title: "Settings",
+          title: translate("settings"),
           date: null,
         ),
         SizedBox(
@@ -42,33 +43,33 @@ class SettingsScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: [
                   Setting(
-                    title: 'Profile',
+                    title: translate("profile"),
                     onTap: () => Get.toNamed(Profile.routeName),
                   ),
                   Setting(
-                    title: 'About PayPay',
+                    title: translate("aboutTheApp"),
                     onTap: () => Get.toNamed(AboutScreen.routeName),
                   ),
                   Setting(
-                    title: 'Our Team',
+                    title: translate("ourTeam"),
                     onTap: () => Get.toNamed(TeamScreen.routeName),
                   ),
                   Setting(
-                    title: 'Change Color Theme',
+                    title: translate("change_color_theme"),
                     onTap: () async {
                       Get.toNamed(ChangeColorScreen.routeName);
                     },
                   ),
                   Setting(
-                    title: 'Share PayPay',
+                    title: translate("share_paypay"),
                     onTap: () => null,
                   ),
                   Setting(
-                    title: 'Change Language',
+                    title: translate("change_language"),
                     onTap: () => null,
                   ),
                   Setting(
-                    title: 'Reset Data',
+                    title: translate("resetData"),
                     onTap: () => Get.toNamed(ResetPage.routeName),
                   ),
                 ],

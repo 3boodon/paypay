@@ -1,6 +1,8 @@
 /// Packages & Libraries
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -19,7 +21,15 @@ void main() async {
   await Hive.openBox(spendingBoxName);
   await Hive.openBox(debtBoxName);
   getColors();
-  runApp(MyApp());
+  var delegate = await LocalizationDelegate.create(
+    basePath: "assets/languages/",
+    fallbackLocale: 'en_US',
+    supportedLocales: const [
+      'en_US',
+      "ar",
+    ],
+  );
+  runApp(LocalizedApp(delegate, MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -30,13 +40,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: kTheme,
-      title: 'PayPay',
-      // defaultTransition: Transition.fadeIn,
-      getPages: getAppRoutes(),
-      initialRoute: check(),
+    final localizationDelegate = LocalizedApp.of(context).delegate;
+    Constants.appLanguageCode = localizationDelegate.currentLocale.languageCode;
+    return LocalizationProvider(
+      state: LocalizationProvider.of(context).state,
+      child: GetMaterialApp(
+        supportedLocales: localizationDelegate.supportedLocales,
+        locale: localizationDelegate.currentLocale,
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          localizationDelegate
+        ],
+        debugShowCheckedModeBanner: false,
+        theme: kTheme,
+        title: 'PayPay',
+        // defaultTransition: Transition.fadeIn,
+        getPages: getAppRoutes(),
+        initialRoute: check(),
+      ),
     );
   }
 

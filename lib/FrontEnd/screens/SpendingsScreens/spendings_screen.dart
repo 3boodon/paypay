@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hive/hive.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
@@ -30,14 +31,14 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
       children: [
         Header(
           date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-          title: "Spendings",
+          title: translate('spendings'),
         ),
 
         const Spacer(
           flex: 1,
         ),
-        const SearchInput(
-          placeHolder: "Search Spendings",
+        SearchInput(
+          placeHolder: translate("searchSpendings"),
           alignLeft: true,
           type: TextInputType.text,
         ),

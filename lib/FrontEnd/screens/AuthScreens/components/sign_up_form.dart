@@ -1,6 +1,7 @@
 /// Packages & Libraries
 
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -41,7 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 children: [
                   // The Title of The Form
                   Text(
-                    "Register",
+                    translate("register"),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: kDarkTextColor,
@@ -55,7 +56,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     controller: _nameController,
                     alignLeft: true,
                     type: TextInputType.text,
-                    placeHolder: "Write Your Name",
+                    placeHolder: translate("write_your_name"),
                   ),
                   SizedBox(
                     // width: 313,
@@ -69,7 +70,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           alignLeft: true,
                           width: (device.screenWidth * .65) / 2.1,
                           type: TextInputType.number,
-                          placeHolder: "Budget",
+                          placeHolder: translate("budget"),
                         ),
 
                         //Currency DropDown
@@ -89,7 +90,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   ),
 
                   Button(
-                      text: "Sign Up",
+                      text: translate("sign_up"),
                       onPressed: () async {
                         UserData data = UserData()
                           ..name = _nameController.text

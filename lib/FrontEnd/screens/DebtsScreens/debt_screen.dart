@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hive/hive.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
@@ -19,13 +20,13 @@ class DebtScreen extends StatelessWidget {
       children: [
         Header(
           date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-          title: "Debts",
+          title: translate("debts"),
         ),
         const Spacer(
           flex: 1,
         ),
-        const SearchInput(
-          placeHolder: "Search Debts",
+        SearchInput(
+          placeHolder: translate("searchDebts"),
           alignLeft: true,
           type: TextInputType.text,
         ),

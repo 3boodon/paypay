@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import '../../../constants/constants.dart';
@@ -44,8 +45,11 @@ class BigCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "You Owe",
+                                translate("youOwe"),
                                 style: TextStyle(
+                                  fontFamily: Constants.appLanguageCode == "ar"
+                                      ? "GE_SS"
+                                      : "Poppins",
                                   color: kLightTextColor,
                                   fontWeight: FontWeight.w500,
                                   fontSize: device.localWidth * .07,
@@ -55,12 +59,15 @@ class BigCard extends StatelessWidget {
                                 smartNumber(debt),
                                 maxLines: 1,
                                 style: TextStyle(
+                                  fontFamily: Constants.appLanguageCode == "ar"
+                                      ? "GE_SS"
+                                      : "Poppins",
                                   color: kLightTextColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: device.localWidth * .13,
                                 ),
                               ),
-                              SizedBox(
+                              /* SizedBox(
                                 height: device.localHeight * .30,
                                 width: device.localWidth * .4,
                                 child: LayoutBuilder(
@@ -103,7 +110,7 @@ class BigCard extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              ),
+                              ), */
                             ],
                           ),
                         ),
@@ -112,8 +119,11 @@ class BigCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Debts",
+                              translate("debts"),
                               style: TextStyle(
+                                fontFamily: Constants.appLanguageCode == "ar"
+                                    ? "GE_SS"
+                                    : "Poppins",
                                 color: kLightTextColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: device.localWidth * .1,
@@ -139,16 +149,29 @@ class BigCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: -device.localHeight * .01,
-                  // bottom: 0,
-                  right: device.localWidth * .07,
-                  child: NewButton(
-                    onPressed: onButtonPressed,
-                    height: device.localHeight * .27,
-                    width: device.localWidth * .34,
-                  ),
-                ),
+                Constants.appLanguageCode == 'en_US'
+                    ? Positioned(
+                        bottom: -device.localHeight * .01,
+                        // bottom: 0,
+
+                        right: device.localWidth * .07,
+                        child: NewButton(
+                          onPressed: onButtonPressed,
+                          height: device.localHeight * .27,
+                          width: device.localWidth * .34,
+                        ),
+                      )
+                    : Positioned(
+                        bottom: -device.localHeight * .01,
+                        // bottom: 0,
+
+                        left: device.localWidth * .07,
+                        child: NewButton(
+                          onPressed: onButtonPressed,
+                          height: device.localHeight * .27,
+                          width: device.localWidth * .34,
+                        ),
+                      )
               ],
             )),
           ),

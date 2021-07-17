@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:paypay/FrontEnd/screens/AuthScreens/sign_up_screen.dart';
 import '../../../../FrontEnd/widgets/buttons.dart';
@@ -13,7 +14,7 @@ class WelcomeScreenButtons extends StatelessWidget {
       child: Column(
         children: [
           Button(
-            text: "Proceed to App",
+            text: translate("procced_to_app"),
             onPressed: () => Get.offNamed(SignUpScreen.routeName),
           ),
         ],

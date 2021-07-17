@@ -62,6 +62,9 @@ class Input extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: placeHolder,
                     hintStyle: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
                       color: kInActiveTextColor,
                       fontSize: (isSignUp && device.screenWidth <= 320)
                           ? constraints.maxHeight * .8

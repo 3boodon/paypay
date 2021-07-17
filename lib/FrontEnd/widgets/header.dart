@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
@@ -10,6 +11,8 @@ import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/settings_page.dart';
+
+import '../../BackEnd/controller/home_controller.dart';
 
 // This Widget Is Used In All Screens
 class Header extends StatelessWidget {
@@ -36,47 +39,45 @@ class Header extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 215 / 147,
           child: LayoutBuilder(
-            builder: (context, constraints) => Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Icons
-                      Container(
-                        width: constraints.maxWidth * .2,
-                        child: isHome
-                            ? InkWell(
-                                onTap: () =>
-                                    Get.toNamed(SettingsScreen.routeName),
-                                child: Hero(
-                                  tag: 'settings',
+            builder: (context, constraints) => Directionality(
+              textDirection: Constants.appLanguageCode == "ar"
+                  ? TextDirection.rtl
+                  : TextDirection.ltr,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Icons
+                        Container(
+                          width: constraints.maxWidth * .2,
+                          child: isHome
+                              ? InkWell(
+                                  onTap: () =>
+                                      Get.toNamed(SettingsScreen.routeName),
                                   child: SvgPicture.asset(
                                     "assets/icons/settings.svg", // The Settings Icon is gonna be shown in home screen only
-                                    height: constraints.maxHeight * .18,
+                                    height: constraints.maxHeight * .2,
+                                  ),
+                                )
+                              : InkWell(
+                                  onTap: () {
+                                    Get.back();
+                                  },
+                                  child: RotationTransition(
+                                    turns: AlwaysStoppedAnimation(180 / 360),
+                                    child: SvgPicture.asset(
+                                      "assets/icons/back_arrow.svg", // Back Arrow Icon
+                                      height: constraints.maxHeight * .15,
+                                    ),
                                   ),
                                 ),
-                              )
-                            : InkWell(
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Hero(
-                                  tag: 'settings',
-                                  child: SvgPicture.asset(
-                                    "assets/icons/back_arrow.svg", // Back Arrow Icon
-                                    height: constraints.maxHeight * .12,
-                                  ),
-                                ),
-                              ),
-                      ),
-                      //User Profile Picture
-                      Hero(
-                        tag: 'user',
-                        child: Container(
+                        ),
+                        //User Profile Picture
+                        Container(
                             width: device.localWidth * .25,
                             height: device.localWidth * .25,
                             clipBehavior: Clip.antiAlias,
@@ -86,56 +87,70 @@ class Header extends StatelessWidget {
                             child: Image.asset(
                                 "assets/images/owner.png") // This Should change Depending on the User
                             ),
-                      ),
-                      //Currency
-                      Container(
-                        width: device.localWidth * .1,
-                        height: device.localWidth * .1,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: kPrimaryColor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            data.currency ??
-                                "", // This Should Change Depending in Settings of the User
-                            style: TextStyle(
-                                fontSize: (device.localWidth * .1) * .43,
-                                fontWeight: FontWeight.w500,
-                                color: kLightTextColor),
+                        //Currency
+                        Container(
+                          width: device.localWidth * .1,
+                          height: device.localWidth * .1,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kPrimaryColor,
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Spacer(
-                    flex: 4,
-                  ),
-                  // Header Title
-
-                  AutoSizeText(
-                    (isHome) ? data.name ?? "" : title.toUpperCase(),
-                    maxLines: 1,
-                    style: kHeaderTitleStyle.copyWith(
-                        fontSize: device.localWidth * .1),
-                  ),
-                  (date != null)
-                      ? AutoSizeText(
-                          "Last Update ${(date == "") ? "" : data.signUpDate ?? "no date"}",
-                          style: TextStyle(
-                              color: kDarkTextColor,
-                              fontFamily: "Poppins",
-                              fontSize: device.localWidth * .037),
+                          child: Center(
+                            child: Text(
+                              data.currency ??
+                                  "", // This Should Change Depending in Settings of the User
+                              style: TextStyle(
+                                  fontSize: (device.localWidth * .1) * .43,
+                                  fontWeight: FontWeight.w500,
+                                  color: kLightTextColor),
+                            ),
+                          ),
                         )
-                      : AutoSizeText("sasa",
-                          style: TextStyle(
-                              // height: .3,
-                              color: Colors.white,
-                              fontFamily: "Poppins",
-                              fontSize: device.localWidth * .037)),
-                  Spacer(),
-                ],
+                      ],
+                    ),
+
+                    Spacer(),
+                    // Header Title
+                    // RichText(
+                    //   textAlign: TextAlign.center,
+                    //   text: TextSpan(
+                    //     children: [
+                    AutoSizeText(
+                      (isHome) ? data.name ?? "" : title.toUpperCase(),
+                      maxLines: 1,
+                      style: TextStyle(
+                          height: .3,
+                          fontWeight: FontWeight.w700,
+                          color: kDarkTextColor,
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
+                          fontSize: device.localWidth * .1),
+                    ),
+                    (date != null)
+                        ? AutoSizeText(
+                            "${translate("lastUpdate")} ${(date == "") ? "" : data.signUpDate ?? "no date"} ",
+                            style: TextStyle(
+                                // height: .3,
+                                color: kDarkTextColor,
+                                fontFamily: Constants.appLanguageCode == "ar"
+                                    ? "GE_SS"
+                                    : "Poppins",
+                                fontSize: device.localWidth * .037),
+                          )
+                        : AutoSizeText("sasa",
+                            style: TextStyle(
+                                // height: .3,
+                                color: Colors.white,
+                                fontFamily: Constants.appLanguageCode == "ar"
+                                    ? "GE_SS"
+                                    : "Poppins",
+                                fontSize: device.localWidth * .037)),
+                  ],
+                  // ),
+                  // ),
+                  // ],
+                ),
               ),
             ),
           ),

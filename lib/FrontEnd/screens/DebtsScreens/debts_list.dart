@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
@@ -189,8 +190,10 @@ class _CardText extends StatelessWidget {
               ),
             ),
             Text(
-              "Debt Taken on ${debts[index].debtDate}",
+              "${translate("debtTakenOn")}: ${debts[index].debtDate}",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .05,
                 fontWeight: FontWeight.normal,
                 color: kLightTextColor,
@@ -200,16 +203,20 @@ class _CardText extends StatelessWidget {
               flex: 2,
             ),
             Text(
-              "Debt ${smartNumber(debts[index].debtAmount)} ",
+              "${translate("debts")} ${smartNumber(debts[index].debtAmount)} ",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .08,
                 fontWeight: FontWeight.bold,
                 color: kLightTextColor,
               ),
             ),
             Text(
-              "Should be returned on\n${debts[index].returnDate}",
+              "${translate("shouldBeReturnedOn")} :\n${debts[index].returnDate}",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .05,
                 height: 1.2,
                 fontWeight: FontWeight.normal,

@@ -76,3 +76,7 @@ TextStyle kHeaderTitleTheme = TextStyle(
   color: kDarkTextColor,
   fontFamily: "Poppins",
 );
+
+class Constants {
+  static String appLanguageCode;
+}

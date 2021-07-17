@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter    
   cupertino_icons: ^1.0.2
   provider: ^5.0.0
   flutter_svg: ^0.21.0+1 # Helps us to use svgs in our app
@@ -29,6 +31,7 @@ dependencies:
   path_provider: ^2.0.2
   auto_size_text:
   url_launcher: ^6.0.9
+  flutter_translate: ^3.0.1  
 
 dev_dependencies:
   flutter_test:
@@ -48,7 +51,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
-
+    - assets/languages/
   # Poppins is the font that we are using in our App
   fonts:
     - family: Poppins
@@ -59,3 +62,13 @@ flutter:
           weight: 500
         - asset: assets\fonts\Poppins\Poppins-Regular.ttf
           weight: 100
+
+    - family: GE_SS
+      fonts:
+        - asset: assets\fonts\GE_SS_TWO\ArbFONTS-GE_SS_Two_Bold_4.otf
+          weight: 900
+        - asset: assets\fonts\GE_SS_TWO\ArbFONTS-GE_SS_TWO_MEDIUM_5.otf
+          weight: 500
+        - asset: assets\fonts\GE_SS_TWO\ArbFONTS-GE-SS-Two-Light_28.otf
+          weight: 100      
+          

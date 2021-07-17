@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -41,7 +42,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
         children: [
           Header(
             date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-            title: "Purchase",
+            title: translate("purchases"),
           ),
           Expanded(
             flex: 10,
@@ -55,35 +56,35 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                       Input(
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter a name';
+                            return translate("please_enter_aname");
                           }
                           return null;
                         },
                         controller: _purchasesNameController,
-                        placeHolder: "Purchase Name",
+                        placeHolder: translate("purchase_name"),
                         width: device.screenWidth * .6,
                         type: TextInputType.text,
                       ),
                       Input(
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter a name';
+                            return translate("please_enter_aprice");
                           }
                           return null;
                         },
                         controller: _priceController,
-                        placeHolder: "price",
+                        placeHolder: translate("price"),
                         width: device.screenWidth * .6,
                         type: TextInputType.number,
                       ),
                       DateTimePicker(
-                        placeholder: "date",
+                        placeholder: translate("date"),
                         width: device.screenWidth * .6,
                         dateController: _dateFieldController,
                       ),
                       Button(
                         width: device.screenWidth * .6,
-                        text: "Add",
+                        text: translate("addNew"),
                         onPressed: () => addNewPurchse(
                             price: _priceController,
                             date: _dateFieldController,
@@ -111,9 +112,11 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             margin: EdgeInsets.all(12),
             child: Center(
               child: Text(
-                "New Purchase",
+                translate("new_purchases"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontFamily:
+                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                   fontSize: device.screenWidth * .07,
                   color: kDarkTextColor,
                   fontWeight: FontWeight.bold,

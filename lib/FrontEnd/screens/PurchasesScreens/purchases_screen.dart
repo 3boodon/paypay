@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
@@ -22,13 +23,13 @@ class PurchasesScreen extends StatelessWidget {
       children: [
         Header(
           date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-          title: "Purchases",
+          title: translate("purchases"),
         ),
         Spacer(
           flex: 1,
         ),
         SearchInput(
-          placeHolder: "Search Purchases",
+          placeHolder: translate("searchPurchases"),
           alignLeft: true,
           type: TextInputType.text,
           onChange: (value) {},

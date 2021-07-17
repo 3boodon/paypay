@@ -30,6 +30,8 @@ class Button extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
+                    fontFamily:
+                        Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                     color: kLightTextColor,
                     fontSize: device.localWidth * .08,
                     fontWeight: FontWeight.w700,
@@ -69,6 +71,8 @@ class OutLinedButton extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
+                  fontFamily:
+                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                   color: kPrimaryColor,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,

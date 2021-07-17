@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -29,7 +30,7 @@ class Profile extends StatelessWidget {
     return DeviceData(
         builder: (context, device) => NewPage(children: [
               Header(
-                title: 'Edit Info',
+                title: translate("edit_info"),
                 date: null,
               ),
               Container(
@@ -47,7 +48,7 @@ class Profile extends StatelessWidget {
                           initialValue: userData.name,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: "Edit your name",
+                            labelText: translate("edit_your_name"),
                           ),
                         ),
                         SizedBox(height: device.localHeight * .02),
@@ -59,12 +60,12 @@ class Profile extends StatelessWidget {
                           initialValue: "${userData.budget}",
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: "Edit Your Budget",
+                            labelText: translate("edit_your_budget"),
                           ),
                         ),
                         SizedBox(height: device.localHeight * .02),
                         Button(
-                            text: "Save",
+                            text: translate("save"),
                             onPressed: () async {
                               /// Get an instance of the stored user data
                               UserData s = UserData.fromJSON(

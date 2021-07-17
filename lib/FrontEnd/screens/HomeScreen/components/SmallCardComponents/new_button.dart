@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import '../../../../constants/constants.dart';
 
@@ -26,8 +27,10 @@ class NewButton extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, constraints) => Center(
               child: Text(
-                "New",
+                translate("addNew"),
                 style: TextStyle(
+                  fontFamily:
+                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                   fontWeight: FontWeight.bold,
                   color: kDarkTextColor,
                   fontSize: constraints.maxWidth * .18,

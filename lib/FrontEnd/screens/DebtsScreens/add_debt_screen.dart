@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -40,7 +41,7 @@ class _NewDebtScreenState extends State<NewDebtScreen> {
         children: [
           Header(
             date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-            title: "Debts",
+            title: translate("debts"),
           ),
           Expanded(
             flex: 10,
@@ -54,40 +55,40 @@ class _NewDebtScreenState extends State<NewDebtScreen> {
                       Input(
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter a name';
+                            return translate("please_enter_aname");
                           }
                           return null;
                         },
                         controller: _ownerName,
-                        placeHolder: "Debt Name",
+                        placeHolder: translate("debt_name"),
                         width: device.screenWidth * .5,
                         type: TextInputType.text,
                       ),
                       Input(
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please enter a price';
+                            return translate("please_enter_aprice");
                           }
                           return null;
                         },
                         controller: _debtController,
-                        placeHolder: "price",
+                        placeHolder: translate("price"),
                         width: device.screenWidth * .5,
                         type: TextInputType.number,
                       ),
                       DateTimePicker(
-                        placeholder: "Debt Date",
+                        placeholder: translate("debt_date"),
                         width: device.screenWidth * .5,
                         dateController: _debtDateController,
                       ),
                       DateTimePicker(
-                        placeholder: "Return Date",
+                        placeholder: translate("return_date"),
                         width: device.screenWidth * .5,
                         dateController: _returnDateController,
                       ),
                       Button(
                         width: device.screenWidth * .5,
-                        text: "Add",
+                        text: translate("addNew"),
                         onPressed: () => addNewDebt(
                           debt: _debtController,
                           ownerName: _ownerName,
@@ -117,9 +118,11 @@ class _NewDebtScreenState extends State<NewDebtScreen> {
             margin: EdgeInsets.all(12),
             child: Center(
               child: Text(
-                "New Debt",
+                translate("new_debt"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  fontFamily:
+                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                   fontSize: device.screenWidth * .07,
                   color: kDarkTextColor,
                   fontWeight: FontWeight.bold,

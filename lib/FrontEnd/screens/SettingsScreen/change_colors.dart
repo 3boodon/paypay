@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
@@ -19,13 +20,14 @@ class ChangeColorScreen extends StatelessWidget {
     return DeviceData(
       builder: (context, device) => NewPage(children: [
         Header(
-          title: "Theme",
+          title: translate("theme"),
           date: null,
         ),
         AutoSizeText(
-          "PayPay is trying to give you the best experience when using the app, that's why we provided you with four color themes to choose what works best for you.😎🙌",
+          "PayPay ${translate("change_color_theme_description")}😎🙌",
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
+            fontFamily: Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
             fontSize: 13,
             color: Colors.blueGrey,
             fontWeight: FontWeight.normal,
@@ -63,8 +65,8 @@ class ColorThemeOption extends StatelessWidget {
         ModelsService().saveUserDataToHive(s);
 
         Get.snackbar(
-          'success',
-          'New Color was set successfully but you will need to restart the app in order for changes to be applied',
+          translate("success"),
+          translate("success_description"),
           snackPosition: SnackPosition.BOTTOM,
           duration: Duration(seconds: 4),
           isDismissible: true,

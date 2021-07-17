@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/widgets/header.dart';
@@ -18,7 +19,7 @@ class TeamScreen extends StatelessWidget {
         Column(
           children: [
             Header(
-              title: "Team",
+              title: translate("ourTeam"),
             ),
             SizedBox(
               height: 50,

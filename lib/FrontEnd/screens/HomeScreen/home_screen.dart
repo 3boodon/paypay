@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -62,8 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Budget",
+                          translate("budget"),
                           style: TextStyle(
+                              fontFamily: Constants.appLanguageCode == "ar"
+                                  ? "GE_SS"
+                                  : "Poppins",
                               fontWeight: FontWeight.bold,
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.07,
@@ -91,8 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                         /// date
                         Text(
-                          "Last Update on ${data.signUpDate}",
+                          "${translate("lastUpdate")} ${data.signUpDate}",
                           style: TextStyle(
+                              fontFamily: Constants.appLanguageCode == "ar"
+                                  ? "GE_SS"
+                                  : "Poppins",
                               fontWeight: FontWeight.normal,
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.035,
@@ -122,7 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context, value, _) {
                             return SmallCard(
                               date: data.signUpDate,
-                              title: "Spendings",
+                              title: translate("spendings"),
                               spentMoney: Map<String, dynamic>.from(
                                   value.get(userDataKeyName))["totalSpendings"],
                               onButtonPressed: () {
@@ -142,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context, value, _) {
                             return SmallCard(
                               date: data.signUpDate,
-                              title: "Purchases",
+                              title: translate("purchases"),
                               spentMoney: Map<String, dynamic>.from(
                                   value.get(userDataKeyName))["totalPurchases"],
                               onButtonPressed: () {

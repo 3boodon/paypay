@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
@@ -191,22 +192,28 @@ class _CardText extends StatelessWidget {
             Text(
               "${purchases[index].purchaseName}",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .08,
                 fontWeight: FontWeight.bold,
                 color: kLightTextColor,
               ),
             ),
             Text(
-              "Spent on ${purchases[index].date}",
+              "${translate("spentOn")}${purchases[index].date}",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .055,
                 fontWeight: FontWeight.normal,
                 color: kLightTextColor,
               ),
             ),
             Text(
-              "Cost ${smartNumber(purchases[index].price)}",
+              "${translate("cost")} ${smartNumber(purchases[index].price)}",
               style: TextStyle(
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                 fontSize: constraints.maxWidth * .08,
                 fontWeight: FontWeight.bold,
                 color: kLightTextColor,
