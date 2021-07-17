@@ -67,13 +67,19 @@ class Header extends StatelessWidget {
                                   onTap: () {
                                     Get.back();
                                   },
-                                  child: RotationTransition(
-                                    turns: AlwaysStoppedAnimation(180 / 360),
-                                    child: SvgPicture.asset(
-                                      "assets/icons/back_arrow.svg", // Back Arrow Icon
-                                      height: constraints.maxHeight * .15,
-                                    ),
-                                  ),
+                                  child: Constants.appLanguageCode == "ar"
+                                      ? RotationTransition(
+                                          turns:
+                                              AlwaysStoppedAnimation(180 / 360),
+                                          child: SvgPicture.asset(
+                                            "assets/icons/back_arrow.svg", // Back Arrow Icon
+                                            height: constraints.maxHeight * .15,
+                                          ),
+                                        )
+                                      : SvgPicture.asset(
+                                          "assets/icons/back_arrow.svg", // Back Arrow Icon
+                                          height: constraints.maxHeight * .15,
+                                        ),
                                 ),
                         ),
                         //User Profile Picture

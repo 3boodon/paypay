@@ -80,7 +80,7 @@ class _NewSpendingScreenState extends State<NewSpendingScreen> {
                       ),
                       Button(
                           width: device.screenWidth * .6,
-                          text: translate("addNew"),
+                          text: translate("add"),
                           onPressed: () => addNewSpending(
                               spendingName: _spendingsNameController,
                               date: _dateFieldController,

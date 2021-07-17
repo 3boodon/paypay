@@ -27,7 +27,7 @@ class NewButton extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, constraints) => Center(
               child: Text(
-                translate("addNew"),
+                translate("add"),
                 style: TextStyle(
                   fontFamily:
                       Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",

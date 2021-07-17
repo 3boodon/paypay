@@ -84,7 +84,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                       ),
                       Button(
                         width: device.screenWidth * .6,
-                        text: translate("addNew"),
+                        text: translate("add"),
                         onPressed: () => addNewPurchse(
                             price: _priceController,
                             date: _dateFieldController,

@@ -88,7 +88,7 @@ class _NewDebtScreenState extends State<NewDebtScreen> {
                       ),
                       Button(
                         width: device.screenWidth * .5,
-                        text: translate("addNew"),
+                        text: translate("add"),
                         onPressed: () => addNewDebt(
                           debt: _debtController,
                           ownerName: _ownerName,
