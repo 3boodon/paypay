@@ -41,28 +41,12 @@ class HomeController extends GetxController {
 
   // Spendings
 
-  //total spendings
-  var totalSpendingsCost = 0.toDouble().obs;
-  updateSpendingTotal() async {
-    var box = await Hive.openBox(userDataBoxName);
-    var data = UserData.fromJSON(box.get(userDataKeyName));
-    // totalSpendingsCost.value = data.totalSpendings;
-  }
-
   // spendings list
   List<Spending> spendingsList = <Spending>[].obs;
   updateSpendingsList() async {
     await Hive.openBox(spendingBoxName);
 
     spendingsList = await ModelsService().getSpendings();
-  }
-
-  // Debts
-  //total debts
-  var totalDebtsCost = 0.toDouble().obs;
-  updateDebtsTotal() async {
-    var box = await Hive.openBox(userDataBoxName);
-    // totalDebtsCost.value = data.totalSpendings;
   }
 
   //debts List

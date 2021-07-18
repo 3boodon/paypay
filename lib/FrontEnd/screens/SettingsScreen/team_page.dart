@@ -115,12 +115,13 @@ class TeamScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              child: Image.asset("assets/images/s.png"),
+                              child: Image.asset(
+                                  "assets/images/circle-cropped.png"),
                               radius: device.screenWidth * .1,
                             ),
                             SizedBox(height: 3),
                             AutoSizeText(
-                              "Shahdd Alharbi",
+                              "Shahad Alharbi",
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -128,7 +129,7 @@ class TeamScreen extends StatelessWidget {
                               maxLines: 1,
                             ),
                             AutoSizeText(
-                              "Flutter Developer",
+                              "Dart & Flutter Developer",
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Colors.blueGrey,

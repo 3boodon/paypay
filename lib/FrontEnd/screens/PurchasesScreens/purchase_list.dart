@@ -19,7 +19,6 @@ class PurchasesList extends StatelessWidget {
   PurchasesList({@required this.purchases});
   double _newPrice;
   String _newName;
-  TextEditingController _newDates = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

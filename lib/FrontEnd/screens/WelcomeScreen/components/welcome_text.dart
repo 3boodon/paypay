@@ -24,7 +24,7 @@ class WelcomeScreenText extends StatelessWidget {
               ),
             ),
             AutoSizeText(
-              "${translate("welcome_desc1")} PayPay App, ${translate("welcome_desc2")}",
+              "${translate("welcome_desc1")} PayPay, ${translate("welcome_desc2")}",
               maxLines: 4,
               textAlign: TextAlign.center,
               style: TextStyle(

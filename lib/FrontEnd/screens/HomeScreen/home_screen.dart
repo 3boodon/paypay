@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
         // The Budget of the user
         DeviceData(
           builder: (context, device) => Container(
-            height: device.screenHeight * .66,
+            height: device.screenHeight * .64,
             child: ListView(
               physics: BouncingScrollPhysics(),
               clipBehavior: Clip.antiAlias,

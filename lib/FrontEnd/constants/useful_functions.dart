@@ -2,7 +2,6 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
-import 'package:paypay/FrontEnd/screens/AuthScreens/sign_in_screen.dart';
 import 'package:paypay/FrontEnd/screens/AuthScreens/sign_up_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/add_debt_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/debt_screen.dart';
@@ -66,7 +65,6 @@ List<GetPage> getAppRoutes() {
     GetPage(name: PurchasesScreen.routeName, page: () => PurchasesScreen()),
     GetPage(name: DebtScreen.routeName, page: () => DebtScreen()),
     GetPage(name: SpendingsScreen.routeName, page: () => SpendingsScreen()),
-    GetPage(name: SignInScreen.routeName, page: () => SignInScreen()),
     GetPage(name: SignUpScreen.routeName, page: () => SignUpScreen()),
     GetPage(name: SettingsScreen.routeName, page: () => SettingsScreen()),
     GetPage(name: WelcomeScreen.routeName, page: () => WelcomeScreen()),
