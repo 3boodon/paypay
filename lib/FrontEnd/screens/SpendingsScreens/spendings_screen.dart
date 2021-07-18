@@ -39,7 +39,7 @@ class _SpendingsScreenState extends State<SpendingsScreen> {
         ),
         SearchInput(
           placeHolder: translate("searchSpendings"),
-          alignLeft: true,
+          // alignLeft: ,
           type: TextInputType.text,
         ),
         // SpendingsListView(),

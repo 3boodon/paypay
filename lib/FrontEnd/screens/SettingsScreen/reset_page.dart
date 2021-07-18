@@ -26,37 +26,47 @@ class ResetPage extends StatelessWidget {
           Header(
             title: translate("resetData"),
           ),
-          SizedBox(height: device.screenWidth * 0.10),
-          Column(
-            children: [
-              AutoSizeText(
-                translate("resetDatadesc"),
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily:
-                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-                  fontSize: 11,
-                  color: Colors.blueGrey,
-                  fontWeight: FontWeight.normal,
-                ),
-                maxLines: 10,
+          Expanded(
+            child: Container(
+              child: Column(
+                children: [
+                  SizedBox(height: device.screenHeight * .02),
+                  AutoSizeText(
+                    translate("resetDatadesc"),
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                      fontSize: Constants.appLanguageCode == "ar" ? 15 : 11,
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.normal,
+                    ),
+                    maxLines: 10,
+                  ),
+                  Spacer(
+                    flex: 12,
+                  ),
+                  Button(
+                    text: translate("resetData"),
+                    width: device.screenWidth * .6,
+                    color: Colors.redAccent,
+                    onPressed: () {
+                      UserData s = UserData.fromJSON(Map<String, dynamic>.from(
+                          Hive.box(userDataBoxName).get(userDataKeyName)));
+                      s.loggedIn = false;
+                      ModelsService().saveUserDataToHive(s);
+                      Hive.box(purchaseBoxName).clear();
+                      Hive.box(spendingBoxName).clear();
+                      Hive.box(debtBoxName).clear();
+                      Get.offNamed(WelcomeScreen.routeName);
+                    },
+                  ),
+                  Spacer(),
+                ],
               ),
-              SizedBox(height: device.screenWidth * 0.10),
-              Button(
-                text: translate("resetData"),
-                width: device.screenWidth * .6,
-                onPressed: () {
-                  UserData s = UserData.fromJSON(Map<String, dynamic>.from(
-                      Hive.box(userDataBoxName).get(userDataKeyName)));
-                  s.loggedIn = false;
-                  ModelsService().saveUserDataToHive(s);
-                  Hive.box(purchaseBoxName).clear();
-                  Hive.box(spendingBoxName).clear();
-                  Hive.box(debtBoxName).clear();
-                  Get.offNamed(WelcomeScreen.routeName);
-                },
-              ),
-            ],
+            ),
           )
         ],
       ),

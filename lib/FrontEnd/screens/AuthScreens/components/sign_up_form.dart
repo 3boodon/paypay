@@ -1,13 +1,14 @@
 /// Packages & Libraries
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/controller/home_controller.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
+import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/screens/HomeScreen/home_screen.dart';
 import 'package:paypay/FrontEnd/widgets/AppLists/dropDownInput.dart';
 
@@ -41,20 +42,22 @@ class _SignUpFormState extends State<SignUpForm> {
               child: Column(
                 children: [
                   // The Title of The Form
-                  Text(
+                  AutoSizeText(
                     translate("register"),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: kDarkTextColor,
-                        fontSize: 40,
+                        fontSize: 30,
+                        fontFamily: "GE_SS",
                         fontWeight: FontWeight.w700),
+                    maxLines: 1,
                   ),
                   const SizedBox(
                     height: 20,
                   ), // adds some space
                   Input(
                     controller: _nameController,
-                    alignLeft: true,
+                    // alignLeft: true,
                     type: TextInputType.text,
                     placeHolder: translate("write_your_name"),
                   ),
@@ -67,7 +70,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         Input(
                           isSignUp: true,
                           controller: _budgetController,
-                          alignLeft: true,
+                          // alignLeft: true,
                           width: (device.screenWidth * .65) / 2.1,
                           type: TextInputType.number,
                           placeHolder: translate("budget"),
@@ -77,7 +80,7 @@ class _SignUpFormState extends State<SignUpForm> {
                         Obx(
                           () => DropDownInput(
                             width: (device.screenWidth * .65) / 2.1,
-                            hint: "cu",
+                            hint: "curren",
                             value: h.currency.value,
                             onChange: (String selectedCurrency) {
                               h.changeCurrency(selectedCurrency);
@@ -96,8 +99,7 @@ class _SignUpFormState extends State<SignUpForm> {
                           ..name = _nameController.text
                           ..budget = double.parse(_budgetController.text)
                           ..currency = h.currency.value
-                          ..signUpDate =
-                              DateFormat.yMMMd().format(DateTime.now())
+                          ..signUpDate = smartDate(DateTime.now())
                           ..loggedIn = true;
 
                         ModelsService().saveUserDataToHive(data);

@@ -89,7 +89,10 @@ class _DateTimePickerState extends State<DateTimePicker> {
                           height: (widget.isSignUp && device.screenWidth <= 320)
                               ? .1
                               : null,
-                          fontWeight: FontWeight.w100,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: Constants.appLanguageCode == "ar"
+                              ? "GE_SS"
+                              : "Poppins",
                           fontSize:
                               (widget.isSignUp && device.screenWidth <= 320)
                                   ? constraints.maxHeight * .8

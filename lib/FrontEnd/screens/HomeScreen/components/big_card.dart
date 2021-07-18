@@ -59,22 +59,28 @@ class BigCard extends StatelessWidget {
                                 smartNumber(debt),
                                 maxLines: 1,
                                 style: TextStyle(
-                                  fontFamily: Constants.appLanguageCode == "ar"
-                                      ? "GE_SS"
-                                      : "Poppins",
+                                  fontFamily: "Poppins",
                                   color: kLightTextColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: device.localWidth * .13,
                                 ),
                               ),
-                              /* SizedBox(
+                              Spacer(
+                                flex: 3,
+                              ),
+                              SizedBox(
                                 height: device.localHeight * .30,
                                 width: device.localWidth * .4,
                                 child: LayoutBuilder(
                                   builder: (_, constraints) => Stack(
                                     children: [
                                       Positioned(
-                                        left: constraints.maxWidth * .36,
+                                        left: Constants.appLanguageCode == "en"
+                                            ? constraints.maxWidth * .36
+                                            : null,
+                                        right: Constants.appLanguageCode == "ar"
+                                            ? constraints.maxWidth * .36
+                                            : null,
                                         bottom: 0,
                                         top: 0,
                                         child: Opacity(
@@ -84,7 +90,12 @@ class BigCard extends StatelessWidget {
                                                     "assets/images/owner.png")),
                                       ),
                                       Positioned(
-                                        left: constraints.maxWidth * .28,
+                                        left: Constants.appLanguageCode == "en"
+                                            ? constraints.maxWidth * .28
+                                            : null,
+                                        right: Constants.appLanguageCode == "ar"
+                                            ? constraints.maxWidth * .28
+                                            : null,
                                         bottom: 0,
                                         top: 0,
                                         child: Opacity(
@@ -94,14 +105,24 @@ class BigCard extends StatelessWidget {
                                                     "assets/images/owner.png")),
                                       ),
                                       Positioned(
-                                        left: constraints.maxWidth * .17,
+                                        left: Constants.appLanguageCode == "en"
+                                            ? constraints.maxWidth * .17
+                                            : null,
+                                        right: Constants.appLanguageCode == "ar"
+                                            ? constraints.maxWidth * .17
+                                            : null,
                                         bottom: 0,
                                         top: 0,
                                         child: OwnerImage(
                                             image: "assets/images/owner.png"),
                                       ),
                                       Positioned(
-                                        left: 0,
+                                        left: Constants.appLanguageCode == "en"
+                                            ? 0
+                                            : null,
+                                        right: Constants.appLanguageCode == "ar"
+                                            ? 0
+                                            : null,
                                         bottom: 0,
                                         top: 0,
                                         child: OwnerImage(
@@ -110,7 +131,8 @@ class BigCard extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              ), */
+                              ),
+                              Spacer(),
                             ],
                           ),
                         ),
@@ -149,12 +171,12 @@ class BigCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Constants.appLanguageCode == 'en_US'
+                Constants.appLanguageCode == 'ar'
                     ? Positioned(
                         bottom: -device.localHeight * .01,
                         // bottom: 0,
 
-                        right: device.localWidth * .07,
+                        left: device.localWidth * .07,
                         child: NewButton(
                           onPressed: onButtonPressed,
                           height: device.localHeight * .27,
@@ -165,7 +187,7 @@ class BigCard extends StatelessWidget {
                         bottom: -device.localHeight * .01,
                         // bottom: 0,
 
-                        left: device.localWidth * .07,
+                        right: device.localWidth * .07,
                         child: NewButton(
                           onPressed: onButtonPressed,
                           height: device.localHeight * .27,

@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? "GE_SS"
                                   : "Poppins",
                               fontWeight: FontWeight.bold,
+                              color: kDarkTextColor,
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.07,
                               height: .3),
@@ -87,6 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               maxLines: 1,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
+                                  color: kDarkTextColor,
+                                  fontFamily: "Poppins",
                                   fontSize:
                                       MediaQuery.of(context).size.width * 0.13),
                             );
@@ -94,16 +97,28 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
 
                         /// date
-                        Text(
-                          "${translate("lastUpdate")} ${data.signUpDate}",
+                        AutoSizeText.rich(
+                          TextSpan(children: [
+                            TextSpan(
+                                text: "${translate("lastUpdate")}  ",
+                                style: TextStyle(
+                                    fontFamily:
+                                        Constants.appLanguageCode == "ar"
+                                            ? "GE_SS"
+                                            : "Poppins")),
+                            TextSpan(
+                                text: data.signUpDate,
+                                style: TextStyle(
+                                  fontFamily: "Poppins",
+                                )),
+                          ]),
                           style: TextStyle(
-                              fontFamily: Constants.appLanguageCode == "ar"
-                                  ? "GE_SS"
-                                  : "Poppins",
-                              fontWeight: FontWeight.normal,
-                              fontSize:
-                                  MediaQuery.of(context).size.width * 0.035,
-                              height: .3),
+                            height: .4,
+                            fontSize: Constants.appLanguageCode == "ar"
+                                ? MediaQuery.of(context).size.width * 0.035
+                                : MediaQuery.of(context).size.width * 0.035,
+                            color: kDarkTextColor,
+                          ),
                         ),
                       ],
                     ),

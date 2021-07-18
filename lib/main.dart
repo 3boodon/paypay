@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: kTheme,
         title: 'PayPay',
-        // defaultTransition: Transition.fadeIn,
+        defaultTransition: Transition.topLevel,
         getPages: getAppRoutes(),
         initialRoute: check(),
       ),

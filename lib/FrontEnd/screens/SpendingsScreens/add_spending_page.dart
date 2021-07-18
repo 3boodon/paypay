@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/services/buttons_services.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
-import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
-import 'package:paypay/FrontEnd/screens/HomeScreen/home_screen.dart';
 import 'package:paypay/FrontEnd/widgets/buttons.dart';
 import 'package:paypay/FrontEnd/widgets/date.dart';
 import 'package:paypay/FrontEnd/widgets/header.dart';
@@ -80,7 +76,7 @@ class _NewSpendingScreenState extends State<NewSpendingScreen> {
                       ),
                       Button(
                           width: device.screenWidth * .6,
-                          text: translate("add"),
+                          text: translate("addNew"),
                           onPressed: () => addNewSpending(
                               spendingName: _spendingsNameController,
                               date: _dateFieldController,

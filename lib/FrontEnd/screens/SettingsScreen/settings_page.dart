@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
-import 'package:paypay/BackEnd/Models/models.dart';
-import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
 
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/about_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/change_colors.dart';
+import 'package:paypay/FrontEnd/screens/SettingsScreen/lang_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/profile.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/reset_page.dart';
 
@@ -32,9 +30,6 @@ class SettingsScreen extends StatelessWidget {
           title: translate("settings"),
           date: null,
         ),
-        SizedBox(
-          height: 40,
-        ),
         Expanded(
           flex: 12,
           child: DeviceData(
@@ -43,32 +38,46 @@ class SettingsScreen extends StatelessWidget {
                 physics: BouncingScrollPhysics(),
                 children: [
                   Setting(
+                    icon: Icon(Icons.person_outlined,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("profile"),
                     onTap: () => Get.toNamed(Profile.routeName),
                   ),
                   Setting(
+                    icon: Icon(Icons.info_outline,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("aboutTheApp"),
                     onTap: () => Get.toNamed(AboutScreen.routeName),
                   ),
                   Setting(
+                    icon: Icon(Icons.code_rounded,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("ourTeam"),
                     onTap: () => Get.toNamed(TeamScreen.routeName),
                   ),
                   Setting(
+                    icon: Icon(Icons.invert_colors_outlined,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("change_color_theme"),
                     onTap: () async {
                       Get.toNamed(ChangeColorScreen.routeName);
                     },
                   ),
                   Setting(
+                    icon: Icon(Icons.share_outlined,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("share_paypay"),
                     onTap: () => null,
                   ),
                   Setting(
+                    icon: Icon(Icons.language_outlined,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("change_language"),
-                    onTap: () => null,
+                    onTap: () => Get.toNamed(LanguageScreen.routeName),
                   ),
                   Setting(
+                    icon: Icon(Icons.delete_outline,
+                        color: kPrimaryColor, size: device.localWidth * .08),
                     title: translate("resetData"),
                     onTap: () => Get.toNamed(ResetPage.routeName),
                   ),
@@ -77,10 +86,6 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
         ),
-
-        Spacer(
-          flex: 1,
-        ), // This adds some space at the bottom of the screen
       ],
     );
   }

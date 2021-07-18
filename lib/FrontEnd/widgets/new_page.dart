@@ -23,6 +23,7 @@ class NewPage extends StatelessWidget {
                 height: deviceInfo.screenHeight -
                     MediaQuery.of(context).padding.top,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: children,
                 ),

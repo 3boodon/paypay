@@ -16,36 +16,50 @@ getColors() async {
 List<int> colors = [
   0xff50c0fb,
   0xff30D4FF,
-  0xff000000,
+  0xff273146,
   0xffffffff,
   0x25000000,
 ];
 List<int> colors1 = [
-  0xff50c0fb,
-  0xff30D4FF,
-  0xff000000,
-  0xffffffff,
+  0xff7150CE,
+  0xff8E6FE4,
+  0xff273146,
+  0xffF1F1F1,
   0x25000000,
 ];
 List<int> colors2 = [
-  0xff1d1e1e,
-  0xff505050,
-  0xff000000,
+  0xff50A6FB,
+  0xff30D4FF,
+  0xff273146,
   0xffffffff,
   0x25000000,
 ];
 List<int> colors3 = [
-  0xffF35044,
-  0xffC92C20,
-  0xff000000,
+  0xff14c99f,
+  0xff25dbb1,
+  0xff273146,
   0xffffffff,
   0x25000000,
 ];
 List<int> colors4 = [
-  0xff14c99f,
-  0xff25dbb1,
+  0xff2BC6C7,
+  0xff2ED6D6,
   0xff000000,
   0xffffffff,
+  0x25000000,
+];
+List<int> colors5 = [
+  0xffE1D3D3,
+  0xffECE0E0,
+  0xff4D4D4D,
+  0xffFeFeFe,
+  0x25000000,
+];
+List<int> colors6 = [
+  0xff273146,
+  0xff2B374E,
+  0xff273146,
+  0xffE6E5E3,
   0x25000000,
 ];
 
@@ -67,7 +81,8 @@ TextStyle kHeaderTitleStyle = TextStyle(
 
 ThemeData kTheme = ThemeData(
   fontFamily: "Poppins", // this is gonna be the default font for the App
-  scaffoldBackgroundColor: kLightTextColor,
+  scaffoldBackgroundColor: Colors.white,
+  // primarySwatch: kPrimaryColor,
 );
 
 TextStyle kHeaderTitleTheme = TextStyle(

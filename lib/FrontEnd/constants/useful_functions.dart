@@ -10,6 +10,7 @@ import 'package:paypay/FrontEnd/screens/PurchasesScreens/add_purchase_screen.dar
 import 'package:paypay/FrontEnd/screens/PurchasesScreens/purchases_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/about_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/change_colors.dart';
+import 'package:paypay/FrontEnd/screens/SettingsScreen/lang_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/profile.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/reset_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/settings_page.dart';
@@ -51,7 +52,9 @@ String smartNumber(double number) {
   return numberFormat.format(number);
 }
 
-openBoxes() async {}
+String smartDate(DateTime date) {
+  return DateFormat.yMMMMd().format(date);
+}
 
 /// Just to put all defferent Routes in one place
 List<GetPage> getAppRoutes() {
@@ -71,6 +74,7 @@ List<GetPage> getAppRoutes() {
     GetPage(name: ResetPage.routeName, page: () => ResetPage()),
     GetPage(name: ShareAppScreen.routeName, page: () => ShareAppScreen()),
     GetPage(name: TeamScreen.routeName, page: () => TeamScreen()),
+    GetPage(name: LanguageScreen.routeName, page: () => LanguageScreen()),
     GetPage(name: ChangeColorScreen.routeName, page: () => ChangeColorScreen()),
     GetPage(name: Profile.routeName, page: () => Profile()),
   ];

@@ -31,8 +31,7 @@ class TotalMoney extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   fontSize: device.localWidth * .2,
                   color: kLightTextColor,
-                  fontFamily:
-                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+                  fontFamily: "Poppins",
                 ),
               ),
             ),
@@ -43,9 +42,7 @@ class TotalMoney extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                       fontSize: device.localWidth * .09,
                       color: kLightTextColor,
-                      fontFamily: Constants.appLanguageCode == "ar"
-                          ? "GE_SS"
-                          : "Poppins",
+                      fontFamily: "Poppins",
                     ),
                   )
                 : AutoSizeText(

@@ -5,30 +5,42 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../constants/constants.dart';
 
 class Setting extends StatelessWidget {
-  const Setting({this.title, this.onTap});
+  const Setting({this.title, this.onTap, this.icon});
   final String title;
+  final Widget icon;
   final Function onTap;
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
+      leading: icon,
+      horizontalTitleGap: 2,
       title: AutoSizeText(
         title,
         style: TextStyle(
           fontFamily: Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+          fontSize: Constants.appLanguageCode == "ar" ? 16 : 16,
+          fontWeight: FontWeight.normal,
         ),
         maxFontSize: 40,
         maxLines: 1,
       ),
-      trailing: RotationTransition(
-        turns: AlwaysStoppedAnimation(180 / 360),
-        child: SvgPicture.asset(
-          "assets/icons/back_arrow.svg",
-          width: MediaQuery.of(context).size.height * 0.012,
-        ),
-      ),
+      trailing: Constants.appLanguageCode == "en"
+          ? RotationTransition(
+              turns: AlwaysStoppedAnimation(180 / 360),
+              child: SvgPicture.asset(
+                "assets/icons/back_arrow.svg",
+                width: MediaQuery.of(context).size.height * 0.01,
+              ),
+            )
+          : RotationTransition(
+              turns: AlwaysStoppedAnimation(180 / 90),
+              child: SvgPicture.asset(
+                "assets/icons/back_arrow.svg",
+                // color: kPrimaryColor,
+                width: MediaQuery.of(context).size.height * 0.01,
+              ),
+            ),
     );
   }
 }

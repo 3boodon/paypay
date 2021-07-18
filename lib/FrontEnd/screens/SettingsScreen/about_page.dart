@@ -19,48 +19,54 @@ class AboutScreen extends StatelessWidget {
           Header(
             title: translate("aboutTheApp"),
           ),
-          SizedBox(
-            height: 50,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AutoSizeText(
-                translate("aboutAppDesc"),
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily:
-                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-                  fontSize: 13,
-                  color: Colors.blueGrey,
-                  fontWeight: FontWeight.normal,
+          Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: device.screenWidth * .021),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AutoSizeText(
+                  translate("aboutAppDesc"),
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    height: 1.4,
+                    fontFamily:
+                        Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+                    fontSize: Constants.appLanguageCode == "ar" ? 15 : 11,
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  maxLines: 20,
                 ),
-                maxLines: 10,
-              ),
-              SizedBox(height: device.screenHeight * .014),
-              AutoSizeText(
-                translate("database"),
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+                SizedBox(height: device.screenHeight * .02),
+                AutoSizeText(
+                  translate("database"),
+                  style: TextStyle(
+                    fontSize: Constants.appLanguageCode == "ar" ? 21 : 20,
+                    color: kDarkTextColor,
+                    fontFamily:
+                        Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
                 ),
-                maxLines: 1,
-              ),
-              SizedBox(height: device.screenHeight * .009),
-              AutoSizeText(
-                translate("databaseDesc"),
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily:
-                      Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-                  fontSize: 13,
-                  color: Colors.blueGrey,
-                  fontWeight: FontWeight.normal,
+                SizedBox(height: device.screenHeight * .009),
+                AutoSizeText(
+                  translate("databaseDesc"),
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    height: 1.4,
+                    fontFamily:
+                        Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+                    fontSize: Constants.appLanguageCode == "ar" ? 15 : 11,
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.normal,
+                  ),
+                  maxLines: 20,
                 ),
-                maxLines: 10,
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       );

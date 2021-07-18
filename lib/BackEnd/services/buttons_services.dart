@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
+import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/screens/HomeScreen/home_screen.dart';
 
 addNewPurchse(
@@ -24,7 +24,7 @@ addNewPurchse(
 
   s.budget -= double.parse(price.text);
   s.totalPurchases += double.parse(price.text);
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
 
   ModelsService().saveUserDataToHive(s);
   // Navigate to Home
@@ -47,7 +47,7 @@ addNewSpending(
 
   s.budget -= double.parse(price.text);
   s.totalSpendings += double.parse(price.text);
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
 
   ModelsService().saveUserDataToHive(s);
 
@@ -74,7 +74,7 @@ addNewDebt({
 
   s.budget += double.parse(debt.text);
   s.totalDebts += double.parse(debt.text);
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
   ModelsService().saveUserDataToHive(s);
 
   Get.toNamed(HomeScreen.routeName);
@@ -97,7 +97,7 @@ editPurchasePrice(
   /// here we are updating the Budget, Total Purchases & Saving the date
   s.totalPurchases -= (h.price) - newValue;
   s.budget += (h.price) - newValue;
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
 
   /// here we are updating the info depending on the user's whishes
   h
@@ -128,7 +128,7 @@ editSpendingPrice(
   /// here we are updating the Budget, Total Spendings & Saving the date
   s.totalSpendings -= (h.cost) - newValue;
   s.budget += (h.cost) - newValue;
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
 
   /// here we are updating the info depending on the user's whishes
   h
@@ -158,7 +158,7 @@ editDebt({int index, double newDebt, List<Debt> debts, String ownerName}) {
   /// here we are updating the Budget, Total Spendings & Saving the date
   s.totalDebts -= (h.debtAmount) - newValue;
   s.budget -= (h.debtAmount) - newValue;
-  s.signUpDate = DateFormat.yMMMd().format(DateTime.now());
+  s.signUpDate = smartDate(DateTime.now());
 
   /// here we are updating the info depending on the user's whishes
   h

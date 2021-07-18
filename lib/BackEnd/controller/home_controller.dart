@@ -62,7 +62,6 @@ class HomeController extends GetxController {
   var totalDebtsCost = 0.toDouble().obs;
   updateDebtsTotal() async {
     var box = await Hive.openBox(userDataBoxName);
-    var data = UserData.fromJSON(box.get(userDataKeyName));
     // totalDebtsCost.value = data.totalSpendings;
   }
 

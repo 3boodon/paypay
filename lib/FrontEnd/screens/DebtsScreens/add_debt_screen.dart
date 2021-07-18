@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/services/buttons_services.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
-import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
-import 'package:paypay/FrontEnd/screens/HomeScreen/home_screen.dart';
 import 'package:paypay/FrontEnd/widgets/date.dart';
 
 import 'package:paypay/FrontEnd/widgets/header.dart';
@@ -88,7 +84,7 @@ class _NewDebtScreenState extends State<NewDebtScreen> {
                       ),
                       Button(
                         width: device.screenWidth * .5,
-                        text: translate("add"),
+                        text: translate("addNew"),
                         onPressed: () => addNewDebt(
                           debt: _debtController,
                           ownerName: _ownerName,

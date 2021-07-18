@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
@@ -18,7 +19,7 @@ class NewButton extends StatelessWidget {
           height: height,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
-            color: kLightTextColor,
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
@@ -26,15 +27,20 @@ class NewButton extends StatelessWidget {
           ),
           child: LayoutBuilder(
             builder: (context, constraints) => Center(
-              child: Text(
-                translate("add"),
+              child: AutoSizeText(
+                Constants.appLanguageCode == "ar"
+                    ? translate("addNew")
+                    : translate("add"),
                 style: TextStyle(
                   fontFamily:
                       Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                   fontWeight: FontWeight.bold,
                   color: kDarkTextColor,
-                  fontSize: constraints.maxWidth * .18,
+                  fontSize: Constants.appLanguageCode == "ar"
+                      ? constraints.maxWidth * .16
+                      : constraints.maxWidth * .18,
                 ),
+                maxLines: 1,
               ),
             ),
           ),

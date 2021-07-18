@@ -7,10 +7,12 @@ class Button extends StatelessWidget {
     @required this.text,
     @required this.onPressed,
     this.width,
+    this.color,
   });
   final double width;
   final String text;
   final Function onPressed;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class Button extends StatelessWidget {
             aspectRatio: 213 / 55,
             child: Container(
               decoration: BoxDecoration(
-                color: kPrimaryColor,
+                color: color ?? kPrimaryColor,
                 borderRadius: BorderRadius.circular(device.localWidth * .06),
               ),
               child: Center(
@@ -33,7 +35,9 @@ class Button extends StatelessWidget {
                     fontFamily:
                         Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
                     color: kLightTextColor,
-                    fontSize: device.localWidth * .08,
+                    fontSize: Constants.appLanguageCode == "ar"
+                        ? device.localWidth * .07
+                        : device.localWidth * .07,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

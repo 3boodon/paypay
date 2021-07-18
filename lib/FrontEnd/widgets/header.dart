@@ -12,8 +12,6 @@ import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/settings_page.dart';
 
-import '../../BackEnd/controller/home_controller.dart';
-
 // This Widget Is Used In All Screens
 class Header extends StatelessWidget {
   final bool isHome;
@@ -48,79 +46,160 @@ class Header extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Icons
-                        Container(
-                          width: constraints.maxWidth * .2,
-                          child: isHome
-                              ? InkWell(
-                                  onTap: () =>
-                                      Get.toNamed(SettingsScreen.routeName),
-                                  child: SvgPicture.asset(
-                                    "assets/icons/settings.svg", // The Settings Icon is gonna be shown in home screen only
-                                    height: constraints.maxHeight * .2,
+                    Constants.appLanguageCode == "ar"
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              //Currency
+                              Container(
+                                width: device.localWidth * .1,
+                                height: device.localWidth * .1,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: kPrimaryColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    data.currency ??
+                                        "", // This Should Change Depending in Settings of the User
+                                    style: TextStyle(
+                                        fontSize:
+                                            (device.localWidth * .1) * .43,
+                                        fontWeight: FontWeight.w500,
+                                        color: kLightTextColor),
                                   ),
-                                )
-                              : InkWell(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: Constants.appLanguageCode == "ar"
-                                      ? RotationTransition(
-                                          turns:
-                                              AlwaysStoppedAnimation(180 / 360),
-                                          child: SvgPicture.asset(
-                                            "assets/icons/back_arrow.svg", // Back Arrow Icon
-                                            height: constraints.maxHeight * .15,
-                                          ),
-                                        )
-                                      : SvgPicture.asset(
+                                ),
+                              ),
+                              //User Profile Picture
+                              GestureDetector(
+                                  onTap: () => Get.snackbar(
+                                        translate("pictureSnackTitle"),
+                                        translate("pictureSnackDesc"),
+                                        snackStyle: SnackStyle.FLOATING,
+                                        snackPosition: SnackPosition.BOTTOM,
+                                        duration: Duration(seconds: 4),
+                                        isDismissible: true,
+                                        margin: EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 10),
+                                      ),
+                                  child: Container(
+                                    width: device.localWidth * .25,
+                                    height: device.localWidth * .25,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child:
+                                        Image.asset("assets/images/owner.png"),
+                                  ) // This Should change Depending on the User
+                                  ),
+                              // Icons
+                              Container(
+                                width: constraints.maxWidth * .2,
+                                child: isHome
+                                    ? InkWell(
+                                        onTap: () => Get.toNamed(
+                                            SettingsScreen.routeName),
+                                        child: SvgPicture.asset(
+                                          "assets/icons/settings.svg", // The Settings Icon is gonna be shown in home screen only
+                                          height: constraints.maxHeight * .2,
+                                        ),
+                                      )
+                                    : InkWell(
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                        child: SvgPicture.asset(
                                           "assets/icons/back_arrow.svg", // Back Arrow Icon
                                           height: constraints.maxHeight * .15,
                                         ),
+                                      ),
+                              ),
+                            ],
+                          )
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Icons
+                              Container(
+                                width: constraints.maxWidth * .2,
+                                child: isHome
+                                    ? InkWell(
+                                        onTap: () => Get.toNamed(
+                                            SettingsScreen.routeName),
+                                        child: SvgPicture.asset(
+                                          "assets/icons/settings.svg", // The Settings Icon is gonna be shown in home screen only
+                                          height: constraints.maxHeight * .2,
+                                        ),
+                                      )
+                                    : InkWell(
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                        child: Constants.appLanguageCode == "ar"
+                                            ? RotationTransition(
+                                                turns: AlwaysStoppedAnimation(
+                                                    180 / 360),
+                                                child: SvgPicture.asset(
+                                                  "assets/icons/back_arrow.svg", // Back Arrow Icon
+                                                  height:
+                                                      constraints.maxHeight *
+                                                          .15,
+                                                ),
+                                              )
+                                            : SvgPicture.asset(
+                                                "assets/icons/back_arrow.svg", // Back Arrow Icon
+                                                height:
+                                                    constraints.maxHeight * .15,
+                                              ),
+                                      ),
+                              ),
+                              //User Profile Picture
+                              GestureDetector(
+                                onTap: () => Get.snackbar(
+                                  translate("pictureSnackTitle"),
+                                  translate("pictureSnackDesc"),
+                                  snackStyle: SnackStyle.FLOATING,
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  duration: Duration(seconds: 4),
+                                  isDismissible: true,
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 10),
                                 ),
-                        ),
-                        //User Profile Picture
-                        Container(
-                            width: device.localWidth * .25,
-                            height: device.localWidth * .25,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.asset(
-                                "assets/images/owner.png") // This Should change Depending on the User
-                            ),
-                        //Currency
-                        Container(
-                          width: device.localWidth * .1,
-                          height: device.localWidth * .1,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: kPrimaryColor,
+                                child: Container(
+                                    width: device.localWidth * .25,
+                                    height: device.localWidth * .25,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Image.asset(
+                                        "assets/images/owner.png") // This Should change Depending on the User
+                                    ),
+                              ),
+                              //Currency
+                              Container(
+                                width: device.localWidth * .1,
+                                height: device.localWidth * .1,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: kPrimaryColor,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    data.currency ??
+                                        "", // This Should Change Depending in Settings of the User
+                                    style: TextStyle(
+                                        fontSize:
+                                            (device.localWidth * .1) * .43,
+                                        fontWeight: FontWeight.w500,
+                                        color: kLightTextColor),
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                          child: Center(
-                            child: Text(
-                              data.currency ??
-                                  "", // This Should Change Depending in Settings of the User
-                              style: TextStyle(
-                                  fontSize: (device.localWidth * .1) * .43,
-                                  fontWeight: FontWeight.w500,
-                                  color: kLightTextColor),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-
                     Spacer(),
-                    // Header Title
-                    // RichText(
-                    //   textAlign: TextAlign.center,
-                    //   text: TextSpan(
-                    //     children: [
                     AutoSizeText(
                       (isHome) ? data.name ?? "" : title.toUpperCase(),
                       maxLines: 1,
@@ -133,16 +212,35 @@ class Header extends StatelessWidget {
                               : "Poppins",
                           fontSize: device.localWidth * .1),
                     ),
+                    Constants.appLanguageCode == "ar"
+                        ? SizedBox(
+                            height: 3,
+                          )
+                        : SizedBox(height: 1),
                     (date != null)
-                        ? AutoSizeText(
-                            "${translate("lastUpdate")} ${(date == "") ? "" : data.signUpDate ?? "no date"} ",
+                        ? AutoSizeText.rich(
+                            TextSpan(children: [
+                              TextSpan(
+                                  text: "${translate("lastUpdate")}  ",
+                                  style: TextStyle(
+                                      fontFamily:
+                                          Constants.appLanguageCode == "ar"
+                                              ? "GE_SS"
+                                              : "Poppins")),
+                              TextSpan(
+                                  text:
+                                      "${(date == "") ? "" : data.signUpDate ?? "no date"}",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                  )),
+                            ]),
                             style: TextStyle(
-                                // height: .3,
-                                color: kDarkTextColor,
-                                fontFamily: Constants.appLanguageCode == "ar"
-                                    ? "GE_SS"
-                                    : "Poppins",
-                                fontSize: device.localWidth * .037),
+                              // height: .4,
+                              fontSize: Constants.appLanguageCode == "ar"
+                                  ? MediaQuery.of(context).size.width * 0.035
+                                  : device.localWidth * .037,
+                              color: kDarkTextColor,
+                            ),
                           )
                         : AutoSizeText("sasa",
                             style: TextStyle(

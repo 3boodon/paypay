@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:intl/intl.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/BackEnd/controller/home_controller.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/HomeScreen/home_screen.dart';
-import 'package:paypay/FrontEnd/widgets/AppLists/dropDownInput.dart';
 import 'package:paypay/FrontEnd/widgets/buttons.dart';
 import 'package:paypay/FrontEnd/widgets/header.dart';
-import 'package:paypay/FrontEnd/widgets/input.dart';
 import 'package:paypay/FrontEnd/widgets/new_page.dart';
 
 class Profile extends StatelessWidget {
@@ -45,9 +42,17 @@ class Profile extends StatelessWidget {
                           onChanged: (value) {
                             _userName = value;
                           },
+                          cursorColor: kDarkTextColor,
                           initialValue: userData.name,
                           decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: kPrimaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: kPrimaryColor),
+                            ),
                             border: OutlineInputBorder(),
+                            labelStyle: TextStyle(color: kDarkTextColor),
                             labelText: translate("edit_your_name"),
                           ),
                         ),
@@ -58,8 +63,16 @@ class Profile extends StatelessWidget {
                             _newBudget = double.parse(value) ?? userData.budget;
                           },
                           initialValue: "${userData.budget}",
+                          cursorColor: kDarkTextColor,
                           decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: kPrimaryColor),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: kPrimaryColor),
+                            ),
                             border: OutlineInputBorder(),
+                            labelStyle: TextStyle(color: kDarkTextColor),
                             labelText: translate("edit_your_budget"),
                           ),
                         ),

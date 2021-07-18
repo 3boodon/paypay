@@ -13,6 +13,7 @@ class OwnerImage extends StatelessWidget {
         border: Border.all(color: kPrimaryColor, width: 3),
         image: DecorationImage(
           image: AssetImage(image),
+          colorFilter: ColorFilter.mode(kPrimaryColor, BlendMode.lighten),
         ),
         shape: BoxShape.circle,
       ),

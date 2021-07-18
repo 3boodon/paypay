@@ -47,7 +47,9 @@ class SearchInput extends StatelessWidget {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: Constants.appLanguageCode == "ar"
+                      ? EdgeInsets.only(left: 10)
+                      : EdgeInsets.only(right: 10),
                   child: SvgPicture.asset(
                     "assets/icons/search_icon.svg",
                     width: 20,
@@ -59,8 +61,9 @@ class SearchInput extends StatelessWidget {
                     builder: (_, constraints) => TextFormField(
                       enabled: false,
                       onChanged: (value) => onChange(value),
-                      textAlign:
-                          (alignLeft) ? TextAlign.left : TextAlign.center,
+                      textAlign: Constants.appLanguageCode == "ar"
+                          ? TextAlign.right
+                          : TextAlign.left,
                       keyboardType: type,
                       obscureText: (type == TextInputType.visiblePassword)
                           ? true

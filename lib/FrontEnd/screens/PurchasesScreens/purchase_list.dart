@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_translate/flutter_translate.dart';
@@ -27,14 +28,23 @@ class PurchasesList extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         itemCount: purchases == null ? 0 : purchases.length,
         itemBuilder: (context, index) => InkWell(
+          splashColor: kPrimaryColor,
           onLongPress: () {
             Get.defaultDialog(
               barrierDismissible: true,
               radius: 10,
-              titleStyle: TextStyle(fontWeight: FontWeight.bold),
+              titleStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily:
+                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+              ),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateColor.resolveWith(
+                        (states) => kPrimaryColor),
+                  ),
                   child: Text(
                     translate("cancel"),
                     style: TextStyle(
@@ -50,6 +60,10 @@ class PurchasesList extends StatelessWidget {
                     purchases: purchases,
                     newPrice: _newPrice,
                     name: _newName,
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateColor.resolveWith(
+                        (states) => kPrimaryColor),
                   ),
                   child: Text(
                     translate("edit"),
@@ -75,7 +89,14 @@ class PurchasesList extends StatelessWidget {
                       },
                       initialValue: "${purchases[index].purchaseName}",
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kPrimaryColor),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kPrimaryColor),
+                        ),
                         labelStyle: TextStyle(
+                          color: kPrimaryColor,
                           fontFamily: Constants.appLanguageCode == "ar"
                               ? "GE_SS"
                               : "Poppins",
@@ -93,7 +114,14 @@ class PurchasesList extends StatelessWidget {
                       },
                       initialValue: "${purchases[index].price}",
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kPrimaryColor),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: kPrimaryColor),
+                        ),
                         labelStyle: TextStyle(
+                          color: kPrimaryColor,
                           fontFamily: Constants.appLanguageCode == "ar"
                               ? "GE_SS"
                               : "Poppins",
@@ -164,7 +192,10 @@ class _DeleteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: constraints.maxHeight * .1,
-      right: constraints.maxWidth * .04,
+      right:
+          Constants.appLanguageCode == "en" ? constraints.maxWidth * .04 : null,
+      left:
+          Constants.appLanguageCode == "ar" ? constraints.maxWidth * .04 : null,
       child: InkWell(
         onTap: onPressed,
         child: SizedBox(
@@ -205,7 +236,8 @@ class _CardText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: 25,
+      left: Constants.appLanguageCode == "en" ? 25 : null,
+      right: Constants.appLanguageCode == "ar" ? 25 : null,
       top: 0,
       bottom: 0,
       child: Container(
@@ -223,22 +255,43 @@ class _CardText extends StatelessWidget {
                 color: kLightTextColor,
               ),
             ),
-            Text(
-              "${translate("spentOn")}${purchases[index].date}",
+            AutoSizeText.rich(
+              TextSpan(children: [
+                TextSpan(
+                    text: "${translate("spentOn")} ",
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    )),
+                TextSpan(
+                    text: purchases[index].date,
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                    )),
+              ]),
               style: TextStyle(
-                fontFamily:
-                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-                fontSize: constraints.maxWidth * .055,
-                fontWeight: FontWeight.normal,
+                fontSize: constraints.maxWidth * .050,
                 color: kLightTextColor,
               ),
             ),
-            Text(
-              "${translate("cost")} ${smartNumber(purchases[index].price)}",
+            AutoSizeText.rich(
+              TextSpan(children: [
+                TextSpan(
+                    text: "${translate("cost")} ",
+                    style: TextStyle(
+                      fontFamily: Constants.appLanguageCode == "ar"
+                          ? "GE_SS"
+                          : "Poppins",
+                    )),
+                TextSpan(
+                    text: smartNumber(purchases[index].price),
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                    )),
+              ]),
               style: TextStyle(
-                fontFamily:
-                    Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
-                fontSize: constraints.maxWidth * .08,
+                fontSize: constraints.maxWidth * .07,
                 fontWeight: FontWeight.bold,
                 color: kLightTextColor,
               ),
