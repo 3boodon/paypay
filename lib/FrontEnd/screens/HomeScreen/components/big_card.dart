@@ -2,6 +2,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:hive/hive.dart';
+import 'package:paypay/BackEnd/Models/models.dart';
+import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import '../../../constants/constants.dart';
@@ -20,6 +23,8 @@ class BigCard extends StatelessWidget {
   final double debt;
   @override
   Widget build(BuildContext context) {
+    UserData data = UserData.fromJSON(Map<String, dynamic>.from(
+        Hive.box(userDataBoxName).get(userDataKeyName)));
     return GestureDetector(
       onTap: onCardPressed,
       child: AspectRatio(
@@ -87,7 +92,7 @@ class BigCard extends StatelessWidget {
                                             opacity: .2,
                                             child: OwnerImage(
                                                 image:
-                                                    "assets/images/owner.png")),
+                                                    "assets/images/${data.picture}")),
                                       ),
                                       Positioned(
                                         left: Constants.appLanguageCode == "en"
@@ -102,7 +107,7 @@ class BigCard extends StatelessWidget {
                                             opacity: .5,
                                             child: OwnerImage(
                                                 image:
-                                                    "assets/images/owner.png")),
+                                                    "assets/images/${data.picture}")),
                                       ),
                                       Positioned(
                                         left: Constants.appLanguageCode == "en"
@@ -114,7 +119,8 @@ class BigCard extends StatelessWidget {
                                         bottom: 0,
                                         top: 0,
                                         child: OwnerImage(
-                                            image: "assets/images/owner.png"),
+                                            image:
+                                                "assets/images/${data.picture}"),
                                       ),
                                       Positioned(
                                         left: Constants.appLanguageCode == "en"
@@ -126,7 +132,8 @@ class BigCard extends StatelessWidget {
                                         bottom: 0,
                                         top: 0,
                                         child: OwnerImage(
-                                            image: "assets/images/owner.png"),
+                                            image:
+                                                "assets/images/${data.picture}"),
                                       ),
                                     ],
                                   ),

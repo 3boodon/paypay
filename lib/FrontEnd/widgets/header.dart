@@ -6,9 +6,11 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 import 'package:paypay/BackEnd/Models/models.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
+import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/settings_page.dart';
 
@@ -24,8 +26,10 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     UserData data = UserData.fromJSON(Map<String, dynamic>.from(
         Hive.box(userDataBoxName).get(userDataKeyName)));
-    return DeviceData(
-      builder: (context, device) => Container(
+    return DeviceData(builder: (context, device) {
+      double aspectRatio = (device.screenWidth / device.screenHeight);
+
+      return Container(
         margin: EdgeInsets.only(
             top: (device.screenHeight > 640)
                 ? MediaQuery.of(context).padding.top +
@@ -33,7 +37,8 @@ class Header extends StatelessWidget {
                 : MediaQuery.of(context).padding.top +
                     (device.screenHeight * .01)),
         width: device.screenWidth * .55,
-        height: device.screenHeight * .22,
+        height:
+            getHeaderHeightBasedOnAspectRatio(aspectRatio, device.screenHeight),
         child: AspectRatio(
           aspectRatio: 215 / 147,
           child: LayoutBuilder(
@@ -89,9 +94,11 @@ class Header extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
-                                    child:
-                                        Image.asset("assets/images/owner.png"),
-                                  ) // This Should change Depending on the User
+                                    child: Image.asset(
+                                        "assets/images/${data.picture}"),
+                                  )
+
+                                  // This Should change Depending on the User
                                   ),
                               // Icons
                               Container(
@@ -174,7 +181,7 @@ class Header extends StatelessWidget {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Image.asset(
-                                        "assets/images/owner.png") // This Should change Depending on the User
+                                        "assets/images/${data.picture}") // This Should change Depending on the User
                                     ),
                               ),
                               //Currency
@@ -259,7 +266,7 @@ class Header extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

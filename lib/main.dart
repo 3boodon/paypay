@@ -21,6 +21,7 @@ void main() async {
   await Hive.openBox(spendingBoxName);
   await Hive.openBox(debtBoxName);
   getColors();
+  // getPicture();
   var delegate = await LocalizationDelegate.create(
     basePath: "assets/languages/",
     fallbackLocale: 'en_US',
@@ -29,6 +30,7 @@ void main() async {
       "ar",
     ],
   );
+
   runApp(LocalizedApp(delegate, MyApp()));
 }
 

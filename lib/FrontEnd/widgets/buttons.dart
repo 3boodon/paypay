@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import '../constants/constants.dart';
@@ -29,7 +30,7 @@ class Button extends StatelessWidget {
                 borderRadius: BorderRadius.circular(device.localWidth * .06),
               ),
               child: Center(
-                child: Text(
+                child: AutoSizeText(
                   text,
                   style: TextStyle(
                     fontFamily:
@@ -40,6 +41,7 @@ class Button extends StatelessWidget {
                         : device.localWidth * .07,
                     fontWeight: FontWeight.w700,
                   ),
+                  maxLines: 1,
                 ),
               ),
             ),

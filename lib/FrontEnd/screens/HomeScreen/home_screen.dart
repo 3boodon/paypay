@@ -12,8 +12,8 @@ import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/add_debt_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/debt_screen.dart';
-import 'package:paypay/FrontEnd/screens/PurchasesScreens/add_purchase_screen.dart';
-import 'package:paypay/FrontEnd/screens/PurchasesScreens/purchases_screen.dart';
+import 'package:paypay/FrontEnd/screens/IncomeScreens/add_income_screen.dart';
+import 'package:paypay/FrontEnd/screens/IncomeScreens/income_screen.dart';
 import 'package:paypay/FrontEnd/screens/SpendingsScreens/add_spending_page.dart';
 import 'package:paypay/FrontEnd/screens/SpendingsScreens/spendings_screen.dart';
 import '../../widgets/new_page.dart';
@@ -48,9 +48,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         // The Budget of the user
-        DeviceData(
-          builder: (context, device) => Container(
-            height: device.screenHeight * .64,
+        DeviceData(builder: (context, device) {
+          double aspectRatio = (device.screenWidth / device.screenHeight);
+          return Container(
+            height: getListHeightBasedOnAspectRatio(
+              aspectRatio,
+              device.screenHeight,
+            ),
             child: ListView(
               physics: BouncingScrollPhysics(),
               clipBehavior: Clip.antiAlias,
@@ -157,14 +161,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
 
-                        //Purchases Card
+                        //Income Card
                         ValueListenableBuilder<Box<dynamic>>(
                           valueListenable:
                               Hive.box(userDataBoxName).listenable(),
                           builder: (context, value, _) {
                             return SmallCard(
                               date: data.signUpDate,
-                              title: translate("purchases"),
+                              title: translate("income"),
                               spentMoney: Map<String, dynamic>.from(
                                   value.get(userDataKeyName))["totalPurchases"],
                               onButtonPressed: () {
@@ -201,8 +205,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-          ),
-        ),
+          );
+        }),
         const SizedBox(
           height: 20,
         ),

@@ -13,6 +13,15 @@ getColors() async {
   print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii colooooooooooooooor success ");
 }
 
+getPicture() async {
+  var hi = await Hive.box(userDataBoxName).get(userDataKeyName);
+  UserData s = UserData.fromJSON(Map<String, dynamic>.from(hi));
+  picture = s.picture;
+  print("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii jpg success ");
+}
+
+String picture = "maleuser.png";
+
 List<int> colors = [
   0xff50c0fb,
   0xff30D4FF,

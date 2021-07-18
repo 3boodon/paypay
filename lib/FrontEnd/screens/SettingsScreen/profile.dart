@@ -97,6 +97,24 @@ class Profile extends StatelessWidget {
 
                               Get.offAllNamed(HomeScreen.routeName);
                             }),
+                        SizedBox(height: device.localHeight * .02),
+                        Button(
+                            text: translate("changePic"),
+                            color: kPrimaryLightColor,
+                            onPressed: () async {
+                              /// Get an instance of the stored user data
+                              UserData s = UserData.fromJSON(
+                                  Map<String, dynamic>.from(
+                                      Hive.box(userDataBoxName)
+                                          .get(userDataKeyName)));
+
+                              s.picture == "maleuser.png"
+                                  ? s.picture = "femaleuser.png"
+                                  : s.picture = "maleuser.png";
+
+                              ModelsService().saveUserDataToHive(s);
+                              Get.offAllNamed(HomeScreen.routeName);
+                            }),
                       ],
                     ),
                   ),

@@ -101,7 +101,7 @@ class PurchasesList extends StatelessWidget {
                               : "Poppins",
                         ),
                         border: OutlineInputBorder(),
-                        labelText: translate("purchase_name"),
+                        labelText: translate("income_resource"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),
@@ -126,7 +126,7 @@ class PurchasesList extends StatelessWidget {
                               : "Poppins",
                         ),
                         border: OutlineInputBorder(),
-                        labelText: translate("price"),
+                        labelText: translate("incomeAmount"),
                       ),
                     ),
                     SizedBox(height: device.localHeight * .02),
@@ -257,7 +257,7 @@ class _CardText extends StatelessWidget {
             AutoSizeText.rich(
               TextSpan(children: [
                 TextSpan(
-                    text: "${translate("spentOn")} ",
+                    text: "${translate("recievedOn")} ",
                     style: TextStyle(
                       fontFamily: Constants.appLanguageCode == "ar"
                           ? "GE_SS"
@@ -277,7 +277,7 @@ class _CardText extends StatelessWidget {
             AutoSizeText.rich(
               TextSpan(children: [
                 TextSpan(
-                    text: "${translate("cost")} ",
+                    text: "${translate("incomeAmount")} ",
                     style: TextStyle(
                       fontFamily: Constants.appLanguageCode == "ar"
                           ? "GE_SS"

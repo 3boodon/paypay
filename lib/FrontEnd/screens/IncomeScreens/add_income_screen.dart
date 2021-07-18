@@ -38,7 +38,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
         children: [
           Header(
             date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-            title: translate("purchases"),
+            title: translate("income"),
           ),
           Expanded(
             flex: 10,
@@ -57,7 +57,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                           return null;
                         },
                         controller: _purchasesNameController,
-                        placeHolder: translate("purchase_name"),
+                        placeHolder: translate("income_resource"),
                         width: device.screenWidth * .6,
                         type: TextInputType.text,
                       ),
@@ -69,7 +69,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
                           return null;
                         },
                         controller: _priceController,
-                        placeHolder: translate("price"),
+                        placeHolder: translate("incomeAmount"),
                         width: device.screenWidth * .6,
                         type: TextInputType.number,
                       ),
@@ -108,7 +108,7 @@ class _NewPurchaseScreenState extends State<NewPurchaseScreen> {
             margin: EdgeInsets.all(12),
             child: Center(
               child: Text(
-                translate("new_purchases"),
+                translate("new_income"),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily:

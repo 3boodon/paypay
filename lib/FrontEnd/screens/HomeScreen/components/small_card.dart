@@ -35,16 +35,16 @@ class SmallCard extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  bottom: constraints.localHeight * .25,
+                  bottom: constraints.localHeight * .26,
                   left: (constraints.localWidth -
-                          (constraints.localWidth * 0.3)) /
+                          (constraints.localWidth * 0.27)) /
                       2,
                   right: (constraints.localWidth -
-                          (constraints.localWidth * 0.3)) /
+                          (constraints.localWidth * 0.27)) /
                       2,
                   child: PlusIcon(
-                    width: constraints.localWidth * .3,
-                    height: constraints.localHeight * .2,
+                    width: constraints.localWidth * .27,
+                    height: constraints.localHeight * .18,
                     color: kLightTextColor,
                   ),
                 ),

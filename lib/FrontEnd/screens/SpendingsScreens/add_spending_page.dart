@@ -65,7 +65,7 @@ class _NewSpendingScreenState extends State<NewSpendingScreen> {
                           return null;
                         },
                         controller: _priceController,
-                        placeHolder: translate("price"),
+                        placeHolder: translate("cost"),
                         width: device.screenWidth * .6,
                         type: TextInputType.number,
                       ),

@@ -5,10 +5,11 @@ import 'package:paypay/BackEnd/services/models_services.dart';
 import 'package:paypay/FrontEnd/screens/AuthScreens/sign_up_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/add_debt_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/debt_screen.dart';
-import 'package:paypay/FrontEnd/screens/PurchasesScreens/add_purchase_screen.dart';
-import 'package:paypay/FrontEnd/screens/PurchasesScreens/purchases_screen.dart';
+import 'package:paypay/FrontEnd/screens/IncomeScreens/add_income_screen.dart';
+import 'package:paypay/FrontEnd/screens/IncomeScreens/income_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/about_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/change_colors.dart';
+import 'package:paypay/FrontEnd/screens/SettingsScreen/guides_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/lang_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/profile.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/reset_page.dart';
@@ -41,8 +42,56 @@ double getHeightBasedOnAspectRatio(double aspectRatio, height) {
     return height * .27;
   } else if (aspectRatio == 0.5622435020519836) {
     return height * .28;
+  } else if (aspectRatio == 0.562390158172232) {
+    return height * .28;
   } else {
     return height * .23;
+  }
+}
+
+double getListHeightBasedOnAspectRatio(double aspectRatio, height) {
+  if (aspectRatio == 0.562390158172232) {
+    return height * .70;
+  } else if (aspectRatio == 0.4864864864864865) {
+    return height * .66;
+  } else if (aspectRatio == 0.5622435020519836) {
+    return height * .67;
+  } else if (aspectRatio == 0.47337278106508873) {
+    return height * .69;
+  } else if (aspectRatio == 0.5) {
+    return height * .71;
+  } else if (aspectRatio == 0.5633802816901409) {
+    return height * .71;
+  } else if (aspectRatio == 0.4618226600985222) {
+    return height * .67;
+  } else if (aspectRatio == 0.46205357142857145) {
+    return height * .66;
+  } else if (aspectRatio == 0.5625) {
+    return height * .70;
+  } else {
+    return height * .64;
+  }
+}
+
+double getHeaderHeightBasedOnAspectRatio(double aspectRatio, height) {
+  if (aspectRatio == 0.562390158172232) {
+    return height * .21;
+  } else if (aspectRatio == 0.4864864864864865) {
+    return height * .19;
+  } else if (aspectRatio == 0.5622435020519836) {
+    return height * .21;
+  } else if (aspectRatio == 0.625) {
+    return height * .24;
+  } else if (aspectRatio == 0.5633802816901409) {
+    return height * .20;
+  } else if (aspectRatio == 0.4618226600985222) {
+    return height * .18;
+  } else if (aspectRatio == 0.46205357142857145) {
+    return height * .18;
+  } else if (aspectRatio == 0.5625) {
+    return height * .21;
+  } else {
+    return height * .19;
   }
 }
 
@@ -75,6 +124,7 @@ List<GetPage> getAppRoutes() {
     GetPage(name: LanguageScreen.routeName, page: () => LanguageScreen()),
     GetPage(name: ChangeColorScreen.routeName, page: () => ChangeColorScreen()),
     GetPage(name: Profile.routeName, page: () => Profile()),
+    GetPage(name: GuidesScreen.routeName, page: () => GuidesScreen()),
   ];
 }
 

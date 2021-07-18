@@ -32,7 +32,7 @@ class PlusIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   "assets/icons/plus_icon.svg",
                   width: device.localWidth * .23,
-                  color: color.withOpacity(0.7),
+                  color: color.withOpacity(0.3),
                 ),
               ),
               Positioned(
@@ -41,7 +41,7 @@ class PlusIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   "assets/icons/plus_icon.svg",
                   width: device.localWidth * .23,
-                  color: color.withOpacity(0.7),
+                  color: color.withOpacity(0.3),
                 ),
               ),
               Positioned(
@@ -50,7 +50,7 @@ class PlusIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   "assets/icons/plus_icon.svg",
                   width: device.localWidth * .20,
-                  color: color.withOpacity(0.4),
+                  color: color.withOpacity(0.1),
                 ),
               ),
               Positioned(
@@ -59,7 +59,7 @@ class PlusIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   "assets/icons/plus_icon.svg",
                   width: device.localWidth * .20,
-                  color: color.withOpacity(0.4),
+                  color: color.withOpacity(0.1),
                 ),
               ),
               Positioned(
@@ -69,7 +69,7 @@ class PlusIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   "assets/icons/plus_icon.svg",
                   width: device.localWidth * .20,
-                  color: color.withOpacity(0.3),
+                  color: color.withOpacity(0.05),
                 ),
               ),
             ],

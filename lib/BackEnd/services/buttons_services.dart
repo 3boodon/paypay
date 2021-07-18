@@ -22,7 +22,7 @@ addNewPurchse(
   UserData s = UserData.fromJSON(Map<String, dynamic>.from(
       Hive.box(userDataBoxName).get(userDataKeyName)));
 
-  s.budget -= double.parse(price.text);
+  s.budget += double.parse(price.text);
   s.totalPurchases += double.parse(price.text);
   s.signUpDate = smartDate(DateTime.now());
 
@@ -72,7 +72,7 @@ addNewDebt({
   UserData s = UserData.fromJSON(Map<String, dynamic>.from(
       Hive.box(userDataBoxName).get(userDataKeyName)));
 
-  s.budget += double.parse(debt.text);
+  // s.budget += double.parse(debt.text);
   s.totalDebts += double.parse(debt.text);
   s.signUpDate = smartDate(DateTime.now());
   ModelsService().saveUserDataToHive(s);

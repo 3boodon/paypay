@@ -9,6 +9,7 @@ class UserData extends HiveObject {
   double totalPurchases;
   double totalSpendings;
   double totalDebts;
+  String picture;
   List<int> colors;
   UserData();
 
@@ -20,6 +21,7 @@ class UserData extends HiveObject {
       signUpDate = jsonMap['signUpDate'] ?? "undefined";
       budget = jsonMap['budget'] ?? 0.0;
       currency = jsonMap['currency'] ?? "undefiend";
+      picture = jsonMap['picture'] ?? "maleuser.png";
 
       // Total
       totalPurchases = jsonMap['totalPurchases'] ?? 0.0;
@@ -51,6 +53,7 @@ class UserData extends HiveObject {
         0xffffffff,
         0x25000000,
       ];
+      picture = "maleuser.png";
     }
   }
 
@@ -72,41 +75,11 @@ class UserData extends HiveObject {
           0xffffffff,
           0x25000000,
         ];
+    map['picture'] = picture ?? "maleuser.png";
 
     return map;
   }
 }
-
-// class PayPayColors {
-//   PayPayColors();
-//   List<int> colors;
-//   PayPayColors.fromJSON(Map<String, dynamic> jsonMap) {
-//     try {
-//       colors = jsonMap['colors'] ??
-//           [
-//             0xff14c99f,
-//             0xff25dbb1,
-//             0xff000000,
-//             0xffffffff,
-//             0x25000000,
-//           ];
-//     } catch (e) {
-//       colors = [
-//         0xff14c99f,
-//         0xff25dbb1,
-//         0xff000000,
-//         0xffffffff,
-//         0x25000000,
-//       ];
-//     }
-//   }
-
-//   Map<String, dynamic> toMap() {
-//     var map = new Map<String, dynamic>();
-//     map['colors'] = colors;
-//     return map;
-//   }
-// }
 
 class Purchase {
   Purchase();

@@ -79,46 +79,50 @@ class ColorThemeOption extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         );
       },
-      child: Container(
-        // width: device.screenWidth * .7,
-        padding: EdgeInsets.all(kDefaultPadding - 10),
-        margin: EdgeInsets.all(kDefaultPadding - 18),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(device.localWidth * .03),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 26,
-              color: Colors.black.withOpacity(.04),
-              offset: Offset(0, 0),
-            ),
-          ],
-        ),
-        child: Wrap(
-          direction: Axis.horizontal,
-          children: [
-            CircleAvatar(
-              backgroundColor: Color(colors[1]),
-              radius: device.screenWidth * .05,
-            ),
-            SizedBox(width: device.screenWidth * .014),
-            CircleAvatar(
-              backgroundColor: Color(colors[0]),
-              radius: device.screenWidth * .05,
-            ),
-            // SizedBox(width: device.screenWidth * .014),
-            // CircleAvatar(
-            //   backgroundColor: Color(colors[4]),
-            //   radius: device.screenWidth * .07,
-            // ),
-            // SizedBox(width: device.screenWidth * .014),
-            // CircleAvatar(
-            //   backgroundColor: Color(colors[2]),
-            //   radius: device.screenWidth * .07,
-            // ),
-          ],
-        ),
-      ),
+      child: LayoutBuilder(builder: (context, cons) {
+        return Container(
+          width: (cons.maxWidth / 2) - 30,
+          padding: EdgeInsets.symmetric(
+              horizontal: cons.maxWidth * .03, vertical: cons.maxWidth * .04),
+          margin: EdgeInsets.all(kDefaultPadding - 18),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(device.localWidth * .03),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 26,
+                color: Colors.black.withOpacity(.04),
+                offset: Offset(0, 0),
+              ),
+            ],
+          ),
+          child: Row(
+            // direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: Color(colors[1]),
+                radius: device.screenWidth * .05,
+              ),
+              SizedBox(width: device.screenWidth * .014),
+              CircleAvatar(
+                backgroundColor: Color(colors[0]),
+                radius: device.screenWidth * .05,
+              ),
+              // SizedBox(width: device.screenWidth * .014),
+              // CircleAvatar(
+              //   backgroundColor: Color(colors[4]),
+              //   radius: device.screenWidth * .07,
+              // ),
+              // SizedBox(width: device.screenWidth * .014),
+              // CircleAvatar(
+              //   backgroundColor: Color(colors[2]),
+              //   radius: device.screenWidth * .07,
+              // ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

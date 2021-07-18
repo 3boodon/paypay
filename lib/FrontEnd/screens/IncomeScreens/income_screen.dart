@@ -5,13 +5,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:paypay/BackEnd/Models/models.dart';
 import 'package:paypay/BackEnd/services/models_services.dart';
 
-import 'package:paypay/FrontEnd/screens/PurchasesScreens/purchase_list.dart';
-
 import 'package:paypay/FrontEnd/widgets/header.dart';
 
 import 'package:paypay/FrontEnd/widgets/search_input.dart';
 
 import '../../../FrontEnd/widgets/new_page.dart';
+import 'income_list.dart';
 
 class PurchasesScreen extends StatelessWidget {
   // This is the Route Name that We Are going to use whenever we need to navigate to this page
@@ -23,13 +22,13 @@ class PurchasesScreen extends StatelessWidget {
       children: [
         Header(
           date: Hive.box(userDataBoxName).get(userDataKeyName)["signUpDate"],
-          title: translate("purchases"),
+          title: translate("income"),
         ),
         Spacer(
           flex: 1,
         ),
         SearchInput(
-          placeHolder: translate("searchPurchases"),
+          placeHolder: translate("searchIncome"),
           alignLeft: true,
           type: TextInputType.text,
           onChange: (value) {},
