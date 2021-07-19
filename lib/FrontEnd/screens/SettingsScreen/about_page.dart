@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/widgets/header.dart';
@@ -19,13 +20,31 @@ class AboutScreen extends StatelessWidget {
           Header(
             title: translate("aboutTheApp"),
           ),
-          Padding(
+          Container(
+            height: device.screenHeight * .65,
             padding:
                 EdgeInsets.symmetric(horizontal: device.screenWidth * .021),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              physics: BouncingScrollPhysics(),
               children: [
+                Image.asset(
+                  "assets/images/ic_launcher.png",
+                  height: device.screenWidth * .5,
+                ),
+                AutoSizeText(
+                  "PayPay",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    height: .1,
+                    color: kDarkTextColor,
+                    fontFamily:
+                        Constants.appLanguageCode == "ar" ? "GE_SS" : "Poppins",
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
+                ),
+                SizedBox(height: device.screenHeight * .02),
                 AutoSizeText(
                   translate("aboutAppDesc"),
                   overflow: TextOverflow.ellipsis,
@@ -42,6 +61,7 @@ class AboutScreen extends StatelessWidget {
                 SizedBox(height: device.screenHeight * .02),
                 AutoSizeText(
                   translate("database"),
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: Constants.appLanguageCode == "ar" ? 21 : 20,
                     color: kDarkTextColor,
