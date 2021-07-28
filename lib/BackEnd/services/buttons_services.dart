@@ -96,7 +96,7 @@ editPurchasePrice(
 
   /// here we are updating the Budget, Total Purchases & Saving the date
   s.totalPurchases -= (h.price) - newValue;
-  s.budget += (h.price) - newValue;
+  s.budget -= (h.price) - newValue;
   s.signUpDate = smartDate(DateTime.now());
 
   /// here we are updating the info depending on the user's whishes
@@ -157,7 +157,6 @@ editDebt({int index, double newDebt, List<Debt> debts, String ownerName}) {
 
   /// here we are updating the Budget, Total Spendings & Saving the date
   s.totalDebts -= (h.debtAmount) - newValue;
-  s.budget -= (h.debtAmount) - newValue;
   s.signUpDate = smartDate(DateTime.now());
 
   /// here we are updating the info depending on the user's whishes

@@ -7,6 +7,7 @@ import 'package:paypay/FrontEnd/screens/DebtsScreens/add_debt_screen.dart';
 import 'package:paypay/FrontEnd/screens/DebtsScreens/debt_screen.dart';
 import 'package:paypay/FrontEnd/screens/IncomeScreens/add_income_screen.dart';
 import 'package:paypay/FrontEnd/screens/IncomeScreens/income_screen.dart';
+import 'package:paypay/FrontEnd/screens/OnBoardingScreen/onBoardingScreen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/about_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/change_colors.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/guides_screen.dart';
@@ -125,6 +126,7 @@ List<GetPage> getAppRoutes() {
     GetPage(name: ChangeColorScreen.routeName, page: () => ChangeColorScreen()),
     GetPage(name: Profile.routeName, page: () => Profile()),
     GetPage(name: GuidesScreen.routeName, page: () => GuidesScreen()),
+    GetPage(name: OnBoardingScreen.routeName, page: () => OnBoardingScreen()),
   ];
 }
 
@@ -135,7 +137,7 @@ String check() {
       : false;
 
   if (box.get(userDataKeyName) != null && loggedIn)
-    return HomeScreen.routeName;
+    return OnBoardingScreen.routeName;
   else
     return WelcomeScreen.routeName;
 }

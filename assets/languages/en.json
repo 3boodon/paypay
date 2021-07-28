@@ -81,6 +81,12 @@
 "spendingCardDesc": "Through this card you can either show your spendings list or you can add a new spending to this list by pressing on the Add Button and then filling the required info. As a result for adding a new spending your budget will decrease automatically.",
 "debtCard":"Debt Card",
 "debtCardDesc": "Through this card you can either show your debts list or you can add a new debt to this list by pressing on the Add Button and then filling the required info. Note that this card doesn't affect your budget at all.",
-"changePic": "Change Picture"
+"changePic": "Change Picture",
+"organize_your_financial_life_more":"Organize your financial life more with PayPay",
+"record_your_daily_expenses_easily":"Record your daily expenses easily, by pressing the add button",
+"view_all_your_recorded_expenses":"View all your recorded expenses at any time you want",
+"did_you_make_a_mistake_in_the_addition":"Did you make a mistake in the addition, do not worry you can easily modify the error by long pressing",
+"skip":"Skip",
+"continue":"Continue"
 
 }

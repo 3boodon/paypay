@@ -211,7 +211,7 @@ class Header extends StatelessWidget {
                       (isHome) ? data.name ?? "" : title.toUpperCase(),
                       maxLines: 1,
                       style: TextStyle(
-                          height: .3,
+                          height: .9,
                           fontWeight: FontWeight.w700,
                           color: kDarkTextColor,
                           fontFamily: Constants.appLanguageCode == "ar"

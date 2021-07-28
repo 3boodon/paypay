@@ -24,6 +24,7 @@ dependencies:
   device_preview: ^0.7.1 # Helps Us View the App in different Sizes
   either_option: ^1.0.6
   get: ^4.1.4
+  introduction_screen: ^1.0.9
   #hive Library
   hive:
   hive_flutter:
@@ -32,6 +33,8 @@ dependencies:
   auto_size_text:
   url_launcher: ^6.0.9
   flutter_translate: ^3.0.1  
+  font_awesome_flutter:
+  rflutter_alert: ^2.0.2
 
 dev_dependencies:
   flutter_test:

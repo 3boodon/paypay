@@ -11,6 +11,8 @@ import 'package:paypay/FrontEnd/constants/constants.dart';
 import 'package:paypay/FrontEnd/constants/useful_functions.dart';
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/responsive/models/device_info.dart';
+import 'package:paypay/FrontEnd/widgets/alertDialog.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class DebtsList extends StatelessWidget {
   DebtsList({
@@ -156,15 +158,30 @@ class DebtsList extends StatelessWidget {
                         ),
                         _DeleteButton(
                           onPressed: () async {
-                            ModelsService().deleteDebt(index);
+                            onDeleteButtonPressed(
+                              context: context,
+                              title: "Deleting a debt",
+                              desc:
+                                  "Are you sure you want to delete this debt?",
+                              type: AlertType.warning,
+                              deleteTap: () {
+                                ModelsService().deleteDebt(index);
 
-                            UserData s = UserData.fromJSON(
-                                Map<String, dynamic>.from(
-                                    Hive.box(userDataBoxName)
-                                        .get(userDataKeyName)));
+                                UserData s = UserData.fromJSON(
+                                    Map<String, dynamic>.from(
+                                        Hive.box(userDataBoxName)
+                                            .get(userDataKeyName)));
 
-                            s.totalDebts -= debts[index].debtAmount;
-                            ModelsService().saveUserDataToHive(s);
+                                s.totalDebts -= debts[index].debtAmount;
+                                ModelsService().saveUserDataToHive(s);
+                                Navigator.of(context).pop();
+                              },
+                              confirmButtonText: "Yes",
+                              cancelTap: () {
+                                Navigator.of(context).pop();
+                              },
+                              cancelButtonText: "Cancel",
+                            );
                           },
                           constraints: constraints,
                           device: device,

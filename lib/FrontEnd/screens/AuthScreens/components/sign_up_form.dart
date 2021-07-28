@@ -56,6 +56,12 @@ class _SignUpFormState extends State<SignUpForm> {
                     height: 20,
                   ), // adds some space
                   Input(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
                     controller: _nameController,
                     // alignLeft: true,
                     type: TextInputType.text,
@@ -68,6 +74,12 @@ class _SignUpFormState extends State<SignUpForm> {
                       children: [
                         /// Budget Input
                         Input(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your budget';
+                            }
+                            return null;
+                          },
                           isSignUp: true,
                           controller: _budgetController,
                           // alignLeft: true,
@@ -79,13 +91,26 @@ class _SignUpFormState extends State<SignUpForm> {
                         //Currency DropDown
                         Obx(
                           () => DropDownInput(
+                            validator: (value) =>
+                                value == null ? 'currency is required' : null,
                             width: (device.screenWidth * .65) / 2.1,
-                            hint: "curren",
+                            hint: "curreny",
                             value: h.currency.value,
                             onChange: (String selectedCurrency) {
                               h.changeCurrency(selectedCurrency);
                             },
-                            options: ['SR', 'YR', r'$'],
+                            options: [
+                              'SR',
+                              'YR',
+                              r'$',
+                              'EGP',
+                              'INR',
+                              'EUR',
+                              'MYR',
+                              'SGD',
+                              'PHP',
+                              'IDR'
+                            ],
                           ),
                         ),
                       ],
@@ -95,20 +120,22 @@ class _SignUpFormState extends State<SignUpForm> {
                   Button(
                       text: translate("sign_up"),
                       onPressed: () async {
-                        UserData data = UserData()
-                          ..name = _nameController.text
-                          ..budget = double.parse(_budgetController.text)
-                          ..currency = h.currency.value
-                          ..signUpDate = smartDate(DateTime.now())
-                          ..loggedIn = true;
+                        if (_formKey.currentState.validate()) {
+                          UserData data = UserData()
+                            ..name = _nameController.text
+                            ..budget = double.parse(_budgetController.text)
+                            ..currency = h.currency.value
+                            ..signUpDate = smartDate(DateTime.now())
+                            ..loggedIn = true;
 
-                        ModelsService().saveUserDataToHive(data);
-                        var box = await Hive.openBox(userDataBoxName);
-                        var dataFromHive =
-                            UserData.fromJSON(box.get(userDataKeyName));
+                          ModelsService().saveUserDataToHive(data);
+                          var box = await Hive.openBox(userDataBoxName);
+                          var dataFromHive =
+                              UserData.fromJSON(box.get(userDataKeyName));
 
-                        h.lastUpdateDate.value = dataFromHive.signUpDate;
-                        Get.offAllNamed(HomeScreen.routeName);
+                          h.lastUpdateDate.value = dataFromHive.signUpDate;
+                          Get.offAllNamed(HomeScreen.routeName);
+                        }
                       }),
                 ],
               ),

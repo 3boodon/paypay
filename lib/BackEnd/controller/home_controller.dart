@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   }
 
   // currency
-  var currency = "SR".obs;
+  var currency = r'$'.obs;
 
   changeCurrency(String selectedCurrency) {
     currency.value = selectedCurrency;

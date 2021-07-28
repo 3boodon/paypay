@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
@@ -66,7 +67,7 @@ class SettingsScreen extends StatelessWidget {
                     },
                   ),
                   Setting(
-                    icon: Icon(Icons.task_outlined,
+                    icon: Icon(Icons.integration_instructions_outlined,
                         color: kPrimaryColor, size: height),
                     title: translate("guides"),
                     onTap: () async {
