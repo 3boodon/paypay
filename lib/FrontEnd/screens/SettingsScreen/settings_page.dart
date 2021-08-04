@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_translate/flutter_translate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 import 'package:paypay/FrontEnd/constants/constants.dart';
-
 import 'package:paypay/FrontEnd/responsive/UI/device_data.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/about_page.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/change_colors.dart';
@@ -12,12 +9,9 @@ import 'package:paypay/FrontEnd/screens/SettingsScreen/guides_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/lang_screen.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/profile.dart';
 import 'package:paypay/FrontEnd/screens/SettingsScreen/reset_page.dart';
-
 import 'package:paypay/FrontEnd/screens/SettingsScreen/team_page.dart';
-
 import 'package:paypay/FrontEnd/widgets/header.dart';
 import 'package:paypay/FrontEnd/widgets/setting_tile.dart';
-
 import '../../widgets/new_page.dart';
 
 class SettingsScreen extends StatelessWidget {

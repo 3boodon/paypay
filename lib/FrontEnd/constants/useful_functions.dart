@@ -137,7 +137,7 @@ String check() {
       : false;
 
   if (box.get(userDataKeyName) != null && loggedIn)
-    return OnBoardingScreen.routeName;
+    return HomeScreen.routeName;
   else
-    return WelcomeScreen.routeName;
+    return OnBoardingScreen.routeName;
 }

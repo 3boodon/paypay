@@ -79,10 +79,14 @@
 "debtCard":"بطاقة الديون",
 "debtCardDesc": "من خلال هذه البطاقة يمكنك إما إظهار قائمة ديونك أو يمكنك إضافة دين جديد إلى هذه القائمة بالضغط على زر إضافة ثم ملء البيانات المطلوبة. لاحظ أن هذه البطاقة لن تؤثر على ميزانيتك على الإطلاق.",
 "changePic": "تغيير الصورة",
-"organize_your_financial_life_more":"رتب حياتك المالية أكثر",
-"record_your_daily_expenses_easily":"سجل مصروفاتك اليومية بسهولة ، عن طريق الضغط على زر الإضافة",
-"view_all_your_recorded_expenses":"استعرض جميع مصروفاتك التي سجلتها في أي وقت تريد",
-"did_you_make_a_mistake_in_the_addition":"هل أخطأت في الإضافة؟ لا تقلق يمكنك تعديل الخطأ بسهولة عن طريق الضغط المطول",
+"organize_your_financial_life_more":"رتب حياتك المالية أكثر.",
+"record_your_daily_expenses_easily":"سجل مصروفاتك اليومية بسهولة ، عن طريق الضغط على زر الإضافة.",
+"view_all_your_recorded_expenses":"استعرض جميع مصروفاتك التي سجلتها في أي وقت تريد.",
+"did_you_make_a_mistake_in_the_addition":"هل أخطأت في الإضافة؟ لا تقلق يمكنك تعديل الخطأ بسهولة عن طريق الضغط المطول.",
 "skip":"تخطي",
-"continue":"إستمرار"
+"continue":"إستمرار",
+"easly_orgnized":"سهل التنظيم",
+"review_your_financial_record":"راجع سجلك المالي",
+"many_features":"العديد من الميزات لجعل حياتك أسهل",
+"user_friendly":"سهل الاستخدام"
 }
